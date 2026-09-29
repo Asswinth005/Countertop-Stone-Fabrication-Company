@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StoneCraft · Our Process — Template, Fabricate, Install</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <!-- Tailwind CSS via CDN -->
+    <script src="tailwind.js"></script>
+
+
+  <!-- Custom Tailwind Configuration — stone palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            granite: '#4A4A4A',
+            quartz: '#E8E3DC',
+            slate: '#2F2F2F',
+            marble: '#F5F2EE',
+            copper: '#B87C4B',
+            basalt: '#3A3A3A',
+            travertine: '#D9C9B8',
+            onyx: '#1E1E1E',
+            pearl: '#FAF8F5',
+          },
+          fontFamily: {
+            'display': ['"Poppins"', 'system-ui', 'sans-serif'],
+            'body': ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'spin-slow': 'spinSlow 14s linear infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+            'polish': 'polish 3s ease-in-out infinite',
+            'fadeIn': 'fadeIn 0.5s ease-out',
+            'pulse-ring': 'pulseRing 2.5s ease-out infinite',
+            'progress': 'progress 3s ease-in-out infinite',
+          },
+          keyframes: {
+            floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+            spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+            slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+            polish: { '0%, 100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+            fadeIn: { '0%': { opacity: '0', transform: 'translateY(12px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            pulseRing: { '0%': { transform: 'scale(0.9)', opacity: '0.6' }, '100%': { transform: 'scale(1.8)', opacity: '0' } },
+            progress: { '0%': { width: '0%' }, '50%': { width: '100%' }, '100%': { width: '0%' } },
+          },
+          backgroundImage: {
+            'stone-pattern': 'radial-gradient(circle at 30% 40%, rgba(184, 124, 75, 0.06) 0%, transparent 70%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E1E1E;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .dark body {
+      background-color: #1E1E1E;
+      color: #FAF8F5;
+    }
+    .dark .text-\[\#1E1E1E\] { color: #FAF8F5; }
+
+    .dark nav.fixed {
+      background-color: rgba(30, 30, 30, 0.95) !important;
+      border-color: rgba(184, 124, 75, 0.2) !important;
+    }
+
+    body::-webkit-scrollbar { width: 6px; }
+    body::-webkit-scrollbar-track { background: #FAF8F5; border-radius: 10px; }
+    body::-webkit-scrollbar-thumb { background: #B87C4B; border-radius: 10px; }
+
+    .card-stone {
+      background: white;
+      border-radius: 28px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(184, 124, 75, 0.12);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    }
+    .dark .card-stone {
+      background: #2F2F2F;
+      border-color: rgba(184, 124, 75, 0.2);
+    }
+    .card-stone:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px -10px rgba(184, 124, 75, 0.2);
+      border-color: #B87C4B;
+    }
+
+    .btn-primary {
+      background-color: #B87C4B;
+      color: #FAF8F5;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(184, 124, 75, 0.3);
+    }
+    .btn-primary:hover {
+      background-color: #A0683C;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(184, 124, 75, 0.4);
+      color: white;
+    }
+    .btn-outline {
+      border: 1.5px solid #B87C4B;
+      color: #B87C4B;
+      background: transparent;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background-color: #B87C4B;
+      color: #FAF8F5;
+      transform: translateY(-2px);
+    }
+    .dark .btn-outline:hover {
+      background-color: #B87C4B !important;
+      color: #FAF8F5 !important;
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2.5px;
+      background-color: #B87C4B;
+      transition: width 0.25s ease;
+      border-radius: 3px;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .dropdown-studio { position: relative; }
+    .dropdown-studio-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: white;
+      border-radius: 18px;
+      padding: 0.5rem 0;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      z-index: 1000;
+      border: 1px solid rgba(184, 124, 75, 0.15);
+    }
+    .dark .dropdown-studio-menu { background: #2F2F2F; border-color: rgba(184, 124, 75, 0.25); }
+    .dropdown-studio:hover .dropdown-studio-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 1.4rem;
+      transition: all 0.2s;
+      color: #1E1E1E;
+    }
+    .dark .dropdown-item { color: #FAF8F5; }
+    .dropdown-item:hover {
+      background-color: #FAF8F5;
+      color: #1E1E1E;
+      padding-left: 1.7rem;
+    }
+    .dropdown-item i { margin-right: 0.75rem; width: 20px; }
+
+    .mobile-menu-studio {
+      background: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 0 24px 24px;
+    }
+    .dark .mobile-menu-studio { background: #2F2F2F; }
+    .mobile-menu-studio.open { max-height: 80vh; overflow-y: auto; }
+
+    .social-icon-studio {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FAF8F5;
+      color: #1E1E1E;
+      transition: all 0.3s;
+    }
+    .social-icon-studio:hover {
+      background-color: #B87C4B;
+      color: #FAF8F5;
+      transform: translateY(-3px);
+    }
+    .dark .social-icon-studio { background-color: #2F2F2F; color: #FAF8F5; }
+    .dark .social-icon-studio:hover { background-color: #B87C4B; color: #FAF8F5; }
+
+    [dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+    [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
+    [dir="rtl"] .ms-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+    html[dir="rtl"] .dropdown-studio-menu { left: auto; right: 0; }
+    [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+    [dir="rtl"] .dropdown-item:hover { padding-left: 1.4rem; padding-right: 1.7rem; }
+
+    /* Process page specific */
+    .step-number {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      background: #B87C4B;
+      color: white;
+      box-shadow: 0 8px 24px rgba(184, 124, 75, 0.4);
+      position: relative;
+      z-index: 2;
+      transition: all 0.4s ease;
+    }
+    .step-card:hover .step-number {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 12px 32px rgba(184, 124, 75, 0.5);
+    }
+
+    .step-connector {
+      position: absolute;
+      top: 40px;
+      left: 80px;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, #B87C4B, rgba(184, 124, 75, 0.15));
+      z-index: 1;
+    }
+    @media (max-width: 1024px) {
+      .step-connector { display: none; }
+    }
+
+    .process-image-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .process-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .process-image-wrap:hover img {
+      transform: scale(1.06);
+    }
+
+    .process-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(184, 124, 75, 0.15);
+      color: #B87C4B;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+    }
+    .checklist-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(184, 124, 75, 0.12);
+      color: #B87C4B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .timeline-progress {
+      height: 4px;
+      background: rgba(184, 124, 75, 0.15);
+      border-radius: 100px;
+      overflow: hidden;
+      position: relative;
+    }
+    .timeline-progress-bar {
+      height: 100%;
+      background: #B87C4B;
+      border-radius: 100px;
+      width: 0;
+      transition: width 0.6s ease;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(184, 124, 75, 0.15);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      text-align: left;
+      font-weight: 600;
+      color: #1E1E1E;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .dark .faq-question { color: #FAF8F5; }
+    .faq-question:hover { color: #B87C4B; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 400px;
+      padding-bottom: 1.25rem;
+    }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(184, 124, 75, 0.12);
+      color: #B87C4B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .faq-question.open .faq-icon {
+      background: #B87C4B;
+      color: white;
+      transform: rotate(180deg);
+    }
+
+    .stone-overlay {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23n)" opacity="0.08"/></svg>');
+    }
+
+    .process-nav-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      background: white;
+      color: #1E1E1E;
+      border: 2px solid rgba(184, 124, 75, 0.25);
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+    .dark .process-nav-dot { background: #2F2F2F; color: #FAF8F5; }
+    .process-nav-dot.active {
+      background: #B87C4B;
+      color: white;
+      border-color: #B87C4B;
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(184, 124, 75, 0.4);
+    }
+    .process-nav-dot:hover {
+      border-color: #B87C4B;
+    }
+
+
+  </style>
+</head>
+<body class="stone-pattern">
+
+<!-- ======== NAVIGATION (same structure) ======== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/95 dark:bg-[#1E1E1E]/95 backdrop-blur-md border-b border-[#FAF8F5]/40 dark:border-[#FAF8F5]/10 shadow-sm">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0 relative">
+      <!-- Logo — StoneCraft -->
+      <a class="flex items-center gap-2 md:gap-3 group shrink-0" href="index.html">
+        <div class="w-9 h-9 md:w-10 md:h-10 bg-copper rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300 overflow-hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5" fill="none">
+            <!-- Isometric Stone Slab with Waterfall Edge -->
+            <polygon points="18,4 31,11.5 18,19 5,11.5" fill="white" opacity="0.95"/>
+            <polygon points="5,11.5 18,19 18,31 5,23.5" fill="white" opacity="0.8"/>
+            <polygon points="18,19 31,11.5 31,23.5 18,31" fill="white" opacity="0.6"/>
+            <!-- Natural Marble Vein -->
+            <path d="M10 11 Q15 14 25 9" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M14 17.5 Q15 21 11 25" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- Diamond Sparkle Accent -->
+            <path d="M27 4 L28 6 L30 7 L28 8 L27 10 L26 8 L24 7 L26 6 Z" fill="white" opacity="0.95"/>
+            <circle cx="7" cy="8" r="0.9" fill="white" opacity="0.8"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span class="text-[#1E1E1E] dark:text-[#FAF8F5]">Stone</span><span class="text-copper">Craft</span></span>
+        </div>
+      </a>
+
+      <!-- Centered Desktop Navigation -->
+      <div class="hidden xl:flex items-center justify-center gap-6 absolute left-1/2 -translate-x-1/2">
+        <div class="dropdown-studio">
+          <button class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition flex items-center gap-1 py-2 whitespace-nowrap text-base">
+            Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+          </button>
+          <div class="dropdown-studio-menu">
+            <a class="dropdown-item" href="index.html"> Home 1</a>
+            <a class="dropdown-item" href="home2.html"> Home 2</a>
+          </div>
+        </div>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="about.html">About</a>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="product.html">Products</a>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="gallery.html">Gallery</a>
+        <a class="nav-link text-copper font-medium transition whitespace-nowrap text-base" href="process.html">Process</a>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="contact.html">Contact</a>
+      </div>
+
+      <!-- Desktop actions & Mobile toggle -->
+      <div class="flex items-center gap-3 xl:gap-4 ms-auto">
+        <a href="contact.html" class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
+          <i class="fas fa-calendar-check"></i> Book Now
+        </a>
+        <button id="theme-toggle" class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:inline"></i>
+        </button>
+        <button id="rtl-toggle" class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center font-bold text-base">
+          ⇄
+        </button>
+
+        <!-- Mobile toggle -->
+        <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-copper text-[#FAF8F5] flex items-center justify-center shadow-md">
+          <i class="fas fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu-studio xl:hidden">
+      <div class="py-4 px-3 space-y-1">
+        <div class="py-1">
+          <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] border-l-4 border-copper/30 hover:border-copper bg-copper/5 rounded-xl transition cursor-pointer">
+            <span>Home</span>
+            <i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+          </button>
+          <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+            <a class="block py-2.5 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="index.html">Home 1</a>
+            <a class="block py-2.5 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="home2.html">Home 2</a>
+          </div>
+        </div>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="about.html">About</a>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="product.html">Products</a>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="gallery.html">Gallery</a>
+        <a class="block py-3 px-4 font-medium text-copper bg-copper/5 border-l-4 border-copper rounded-xl transition" href="process.html">Process</a>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="contact.html">Contact</a>
+        <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10">
+          <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2" href="contact.html">
+            <i class="fas fa-calendar-check"></i> Book Now
+          </a>
+          <div class="flex gap-3">
+            <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
+              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme
+            </button>
+            <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
+              ⇄ RTL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== PROCESS HERO ======== -->
+<section class="relative pt-36 pb-24 md:pt-44 md:pb-28 overflow-hidden bg-[#1E1E1E]">
+  <div class="absolute inset-0 z-0">
+    <img src="assets/process-hero.jpg" alt="Stone fabrication workshop" class="w-full h-full object-cover opacity-30">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#1E1E1E] via-[#1E1E1E]/85 to-[#1E1E1E]/70"></div>
+    <div class="absolute inset-0 stone-overlay"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="inline-flex items-center gap-2 bg-[#1E1E1E]/80 text-[#FAF8F5] px-5 py-2 rounded-full text-sm font-bold tracking-wide mb-6 border border-copper/40 backdrop-blur-md">
+        <i class="fas fa-route text-copper"></i> From Vision to Reality
+      </span>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-[#FAF8F5] leading-tight mb-6 drop-shadow-[0_5px_20px_rgba(0,0,0,0.8)]">
+        Our <span class="text-copper">Process</span>
+      </h1>
+      <p class="text-lg md:text-xl text-[#FAF8F5]/80 max-w-2xl mx-auto leading-relaxed mb-10">
+        Three precise steps. One flawless result. From digital templating to final installation, we guide you through every stage of your stone project.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#step-1" class="btn-primary px-8 py-3 rounded-full inline-flex items-center gap-2 text-base shadow-xl">
+          <i class="fas fa-play"></i> Start the Journey
+        </a>
+        <a href="contact.html" class="border border-[#FAF8F5]/30 text-[#FAF8F5] hover:bg-[#FAF8F5]/10 px-8 py-3 rounded-full inline-flex items-center gap-2 text-base backdrop-blur-sm transition">
+          <i class="fas fa-calendar-check"></i> Book a Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SECTION 2: PROCESS OVERVIEW ======== -->
+<section class="py-20 bg-[#F5F2EE] dark:bg-[#1A1A1A] border-b border-copper/15 relative overflow-hidden">
+  <!-- Subtle decorative ambient accents -->
+  <div class="absolute -top-24 -right-24 w-72 h-72 bg-copper/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-copper/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
+        <i class="fas fa-layer-group"></i> 3-Phase Workflow
+      </span>
+      <h2 class="text-3xl md:text-4xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5]">
+        Three Steps to <span class="text-copper">Perfection</span>
+      </h2>
+      <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mt-3 max-w-xl mx-auto text-sm md:text-base">
+        Every project follows our rigorous 3-stage standard to guarantee structural integrity and millimeter precision.
+      </p>
+    </div>
+
+    <!-- 3 step cards -->
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <!-- Step 1 Preview -->
+      <a href="#step-1" class="card-stone p-8 text-center hover:-translate-y-2 transition duration-300 group block">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-copper/12 flex items-center justify-center text-copper text-2xl mb-4 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-ruler-combined"></i>
+        </div>
+        <div class="text-copper font-extrabold text-sm mb-1 uppercase tracking-wider">STEP 01</div>
+        <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Template</h3>
+        <p class="text-xs md:text-sm text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65 leading-relaxed mb-4">
+          The precise digital laser measurement and CAD templating down to the millimeter.
+        </p>
+        
+      </a>
+
+      <!-- Step 2 Preview -->
+      <a href="#step-2" class="card-stone p-8 text-center hover:-translate-y-2 transition duration-300 group block">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-copper/12 flex items-center justify-center text-copper text-2xl mb-4 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-industry"></i>
+        </div>
+        <div class="text-copper font-extrabold text-sm mb-1 uppercase tracking-wider">STEP 02</div>
+        <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Fabricate</h3>
+        <p class="text-xs md:text-sm text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65 leading-relaxed mb-4">
+          Robotic 5-axis CNC waterjet cutting, precision miter cuts, and hand edge polishing.
+        </p>
+        
+      </a>
+
+      <!-- Step 3 Preview -->
+      <a href="#step-3" class="card-stone p-8 text-center hover:-translate-y-2 transition duration-300 group block">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-copper/12 flex items-center justify-center text-copper text-2xl mb-4 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-wrench"></i>
+        </div>
+        <div class="text-copper font-extrabold text-sm mb-1 uppercase tracking-wider">STEP 03</div>
+        <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Install</h3>
+        <p class="text-xs md:text-sm text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65 leading-relaxed mb-4">
+          White-glove placement, invisible seam bonding, and penetrating anti-stain sealant.
+        </p>
+        
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== STEP 1: TEMPLATE ======== -->
+<section id="step-1" class="py-24 bg-[#FAF8F5] dark:bg-[#1E1E1E]">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <!-- Left: Content -->
+      <div class="lg:col-span-5 order-2 lg:order-1">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="step-number">01</div>
+          <div>
+            <span class="process-tag"><i class="fas fa-ruler-combined"></i> Phase One</span>
+            <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight mt-2">
+              Template
+            </h2>
+          </div>
+        </div>
+
+        <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-base leading-relaxed mb-6">
+          Every perfect countertop starts with a perfect template. Our technicians use laser-guided digital measuring tools to capture the exact dimensions, angles, and contours of your space — down to the millimeter.
+        </p>
+
+        <div class="space-y-1 mb-8">
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">On-site digital measurement</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Laser templating captures every wall irregularity.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Sink &amp; appliance cutout planning</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">We verify all fixtures before cutting begins.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Edge profile selection</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Choose from eased, bullnose, bevel, ogee, and more.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Slab layout approval</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">You approve the veining pattern before we cut.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-copper/8 dark:bg-copper/15 rounded-2xl p-5 border-l-4 border-copper">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-lightbulb text-copper text-lg mt-0.5"></i>
+            <div>
+              <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5] mb-1">Pro Tip</div>
+              <p class="text-xs text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70">Have your cabinets fully installed before templating. This ensures the most accurate fit and avoids costly re-cuts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="lg:col-span-7 order-1 lg:order-2">
+        <div class="process-image-wrap h-[420px] md:h-[500px]">
+          <img src="assets/process-template.jpg" alt="Digital templating process">
+          <!-- Floating info card -->
+          <div class="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-xs bg-white/95 dark:bg-[#2F2F2F]/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-copper/15">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-copper flex items-center justify-center text-white">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Timeline</div>
+                <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">1–2 hours on-site</div>
+              </div>
+            </div>
+            <div class="timeline-progress">
+              <div class="timeline-progress-bar" style="width: 33%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== STEP 2: FABRICATE ======== -->
+<section id="step-2" class="py-24 bg-[#F5F2EE] dark:bg-[#1A1A1A] relative overflow-hidden">
+  <!-- Decorative blobs -->
+  <div class="absolute top-20 right-0 w-96 h-96 bg-copper/8 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <!-- Left: Image -->
+      <div class="lg:col-span-7">
+        <div class="process-image-wrap h-[420px] md:h-[500px]">
+          <img src="assets/process-fabricate.jpg" alt="CNC stone fabrication">
+          <!-- Floating info card -->
+          <div class="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-xs bg-white/95 dark:bg-[#2F2F2F]/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-copper/15">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-copper flex items-center justify-center text-white">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Timeline</div>
+                <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">5–7 business days</div>
+              </div>
+            </div>
+            <div class="timeline-progress">
+              <div class="timeline-progress-bar" style="width: 66%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="step-number">02</div>
+          <div>
+            <span class="process-tag"><i class="fas fa-industry"></i> Phase Two</span>
+            <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight mt-2">
+              Fabricate
+            </h2>
+          </div>
+        </div>
+
+        <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-base leading-relaxed mb-6">
+          This is where raw stone becomes a precision-engineered surface. Our CNC bridge saws and waterjet cutters translate your template into exact cuts, while our craftsmen hand-finish every edge.
+        </p>
+
+        <div class="space-y-1 mb-8">
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">CNC precision cutting</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Computer-guided saws cut with 0.1mm accuracy.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Edge profiling &amp; polishing</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Hand-finished edges in your chosen profile.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Sink &amp; cooktop cutouts</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Precision cutouts for undermount or drop-in fixtures.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Quality inspection</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Every piece is inspected before leaving the shop.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-copper/8 dark:bg-copper/15 rounded-2xl p-5 border-l-4 border-copper">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-lightbulb text-copper text-lg mt-0.5"></i>
+            <div>
+              <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5] mb-1">Pro Tip</div>
+              <p class="text-xs text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70">For bookmatched or vein-matched installations, we lay out all slabs side-by-side before cutting to ensure a seamless pattern.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== STEP 3: INSTALL ======== -->
+<section id="step-3" class="py-24 bg-[#FAF8F5] dark:bg-[#1E1E1E]">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <!-- Left: Content -->
+      <div class="lg:col-span-5 order-2 lg:order-1">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="step-number">03</div>
+          <div>
+            <span class="process-tag"><i class="fas fa-wrench"></i> Phase Three</span>
+            <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight mt-2">
+              Install
+            </h2>
+          </div>
+        </div>
+
+        <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-base leading-relaxed mb-6">
+          The final step — and the one that brings it all together. Our installation team arrives on schedule, sets your stone with precision, and leaves your space clean and ready to enjoy.
+        </p>
+
+        <div class="space-y-1 mb-8">
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Dry-fit &amp; leveling</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">We test-fit every piece before final placement.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Seam setting &amp; color matching</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Epoxy seams are color-matched to be nearly invisible.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Sink &amp; fixture installation</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Plumbing connections and appliance hookups.</p>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <span class="checklist-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <div class="font-semibold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Final cleaning &amp; walkthrough</div>
+              <p class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">We clean up and walk you through care instructions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-copper/8 dark:bg-copper/15 rounded-2xl p-5 border-l-4 border-copper">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-lightbulb text-copper text-lg mt-0.5"></i>
+            <div>
+              <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5] mb-1">Pro Tip</div>
+              <p class="text-xs text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70">Plan to be home during installation. We'll need access to water and power, and you'll want to see the final result!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="lg:col-span-7 order-1 lg:order-2">
+        <div class="process-image-wrap h-[420px] md:h-[500px]">
+          <img src="assets/process-install.jpg" alt="Professional stone installation">
+          <!-- Floating info card -->
+          <div class="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-xs bg-white/95 dark:bg-[#2F2F2F]/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-copper/15">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-copper flex items-center justify-center text-white">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Timeline</div>
+                <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">1–2 days on-site</div>
+              </div>
+            </div>
+            <div class="timeline-progress">
+              <div class="timeline-progress-bar" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== TIMELINE OVERVIEW ======== -->
+<section class="py-24 bg-[#EFEAE4] dark:bg-[#1A1A1A] relative overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+        <i class="fas fa-calendar-alt"></i> Timeline
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight">
+        From Start to <span class="text-copper">Finish</span>
+      </h2>
+      <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mt-4 max-w-xl mx-auto text-base">
+        Most residential projects are completed within 2–3 weeks.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-3 gap-4 mb-8">
+        <div class="text-center">
+          <div class="process-nav-dot mx-auto mb-3 active">1</div>
+          <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Template</div>
+          <div class="text-xs text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 mt-1">Day 1</div>
+        </div>
+        <div class="text-center">
+          <div class="process-nav-dot mx-auto mb-3">2</div>
+          <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Fabricate</div>
+          <div class="text-xs text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 mt-1">Days 2–8</div>
+        </div>
+        <div class="text-center">
+          <div class="process-nav-dot mx-auto mb-3">3</div>
+          <div class="font-bold text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">Install</div>
+          <div class="text-xs text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 mt-1">Days 9–10</div>
+        </div>
+      </div>
+
+      <div class="relative h-2 bg-copper/15 rounded-full overflow-hidden">
+        <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-copper to-copper/80 rounded-full" style="width: 100%;"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6 mt-10">
+        <div class="card-stone p-6 text-center">
+          <div class="text-2xl font-extrabold text-copper mb-1">1–2 hrs</div>
+          <div class="text-xs uppercase font-semibold tracking-wider text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">On-site template</div>
+        </div>
+        <div class="card-stone p-6 text-center">
+          <div class="text-2xl font-extrabold text-copper mb-1">5–7 days</div>
+          <div class="text-xs uppercase font-semibold tracking-wider text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Fabrication</div>
+        </div>
+        <div class="card-stone p-6 text-center">
+          <div class="text-2xl font-extrabold text-copper mb-1">1–2 days</div>
+          <div class="text-xs uppercase font-semibold tracking-wider text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Installation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FREQUENTLY ASKED QUESTIONS ======== -->
+<section class="py-24 bg-[#FAF8F5] dark:bg-[#1E1E1E]">
+  <div class="container mx-auto px-6">
+
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+        <i class="fas fa-circle-question"></i> Common Questions
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight">
+        Frequently Asked <span class="text-copper">Questions</span>
+      </h2>
+      <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mt-4 text-base">
+        Got questions about templating, slab fabrication, or installation? Here are the answers to our most common inquiries.
+      </p>
+    </div>
+
+    <!-- Centered FAQ Card -->
+    <div class="max-w-4xl mx-auto card-stone p-7 md:p-10">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do I need to remove my old countertops before templating?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Yes — please have your old countertops removed and cabinets fully installed before our template appointment. This ensures the most accurate measurements. If you need removal services, we can arrange that for an additional fee.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How long does fabrication take?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Standard fabrication takes 5–7 business days after template approval. Complex projects (waterfall edges, bookmatched slabs, intricate cutouts) may take 7–10 business days. We'll give you a specific timeline with your quote.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Will there be seams in my countertop?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Seams are sometimes unavoidable, especially on large islands or L-shaped counters. However, our fabricators color-match epoxy to your stone, making seams nearly invisible. We plan seam placement to be as discreet as possible.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do you disconnect and reconnect plumbing?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            We handle the sink installation and can reconnect basic plumbing. For complex plumbing or gas connections (cooktops), we recommend having a licensed plumber on standby. We'll coordinate timing with you.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What happens if a slab breaks during fabrication or install?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            We stand behind our work. In the rare event of breakage during fabrication, we replace the slab at no cost to you. All our work is backed by a 10-year structural warranty.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How do I care for my new stone countertop?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Use mild soap and water for daily cleaning. For granite and marble, use a pH-neutral stone cleaner and reseal annually. Avoid acidic cleaners on marble. We provide a complete care guide and sample cleaner with every installation.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Help Prompt -->
+    <div class="text-center mt-10">
+      <p class="text-sm text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65">
+        Have more questions about your upcoming project?
+        <a href="contact.html" class="text-copper font-bold hover:underline inline-flex items-center gap-1 ml-1">
+          Speak with our specialists <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== CTA BANNER ======== -->
+<section class="py-20 bg-copper dark:bg-[#1A1A1A]">
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <div class="inline-block mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none">
+          <!-- Isometric Countertop Island with Waterfall Edge -->
+          <polygon points="32,7 55,20 32,33 9,20" fill="white" opacity="0.95"/>
+          <polygon points="9,20 32,33 32,55 9,42" fill="white" opacity="0.8"/>
+          <polygon points="32,33 55,20 55,42 32,55" fill="white" opacity="0.6"/>
+          <!-- Natural Vein Line -->
+          <path d="M18 19 Q27 25 45 16" stroke="#B87C4B" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M25 30 Q27 37 19 44" stroke="#B87C4B" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- Diamond Sparkle Accent -->
+          <path d="M48 7 L50 11 L54 13 L50 15 L48 19 L46 15 L42 13 L46 11 Z" fill="white" opacity="0.95"/>
+          <circle cx="13" cy="14" r="1.5" fill="white" opacity="0.8"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-[#FAF8F5] mb-4">
+        Ready to <span class="text-[#FAF8F5]">Start?</span>
+      </h2>
+      <p class="text-[#FAF8F5]/90 text-lg mb-8">
+        Book your free template appointment today. We'll guide you through every step.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="contact.html" class="bg-[#FAF8F5] text-copper px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition inline-flex items-center gap-2">
+          <i class="fas fa-calendar-check"></i> Book Template
+        </a>
+        <a href="product.html" class="border-2 border-[#FAF8F5] text-[#FAF8F5] px-8 py-3 rounded-full font-semibold hover:bg-[#FAF8F5] hover:text-copper transition">
+          <i class="fas fa-cube"></i> Browse Stone
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER (same structure) ======== -->
+<footer class="bg-[#FAF8F5] dark:bg-[#1E1E1E] text-[#1E1E1E] dark:text-[#FAF8F5] pt-16 pb-8 border-t-4 border-copper transition-colors duration-300">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="text-center md:text-start">
+        <a href="index.html" class="inline-flex items-center justify-center md:justify-start gap-3 mb-6 group hover:opacity-90 transition">
+          <div class="w-9 h-9 md:w-10 md:h-10 bg-copper rounded-xl flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5" fill="none">
+              <!-- Isometric Stone Slab with Waterfall Edge -->
+              <polygon points="18,4 31,11.5 18,19 5,11.5" fill="white" opacity="0.95"/>
+              <polygon points="5,11.5 18,19 18,31 5,23.5" fill="white" opacity="0.8"/>
+              <polygon points="18,19 31,11.5 31,23.5 18,31" fill="white" opacity="0.6"/>
+              <!-- Natural Marble Vein -->
+              <path d="M10 11 Q15 14 25 9" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M14 17.5 Q15 21 11 25" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+              <!-- Diamond Sparkle Accent -->
+              <path d="M27 4 L28 6 L30 7 L28 8 L27 10 L26 8 L24 7 L26 6 Z" fill="white" opacity="0.95"/>
+              <circle cx="7" cy="8" r="0.9" fill="white" opacity="0.8"/>
+            </svg>
+          </div>
+          <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span class="text-[#1E1E1E] dark:text-[#FAF8F5]">Stone</span><span class="text-copper">Craft</span></span>
+        </a>
+        <p class="mb-5 text-[#1E1E1E] dark:text-[#FAF8F5] text-sm">Precision stone fabrication &amp; premium countertops. Crafted for life.</p>
+        <div class="flex justify-center md:justify-start gap-3">
+          <a href="#" class="social-icon-studio"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon-studio"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon-studio"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+        <ul class="space-y-2">
+          <li><a href="product.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Products</a></li>
+          <li><a href="gallery.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Community</h4>
+        <ul class="space-y-2">
+          <li><a href="about.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">About</a></li>
+          <li><a href="contact.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Contact</a></li>
+          <li><a href="#" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Careers</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Showroom</h4>
+        <ul class="space-y-3">
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i class="fas fa-map-marker-alt text-copper mt-1"></i><span>42 Quarry Lane, Stone District</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i class="fas fa-phone text-copper"></i><span>(555) 876-4268</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i class="fas fa-envelope text-copper"></i><span>hello@stonecraft.com</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5] text-sm"><i class="fas fa-clock text-copper"></i><span>Mon–Sat 9am – 6pm</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10 text-center text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">
+      <p>&copy; 2026 StoneCraft · Countertop &amp; Stone Fabrication. <i class="fas fa-gem text-copper mx-1"></i> Built on precision, finished with care.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ======== SCRIPTS ======== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle
+    const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+    themeBtns.forEach(btn => {
+      btn?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      });
+    });
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+
+    // RTL
+    function setRTL(isRTL) {
+      const html = document.documentElement;
+      if (isRTL === 'rtl' || isRTL === true) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); } 
+      else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+    }
+    const savedDir = localStorage.getItem('dir');
+    if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+    else document.documentElement.setAttribute('dir', 'ltr');
+
+    const rtlBtn = document.getElementById('rtl-toggle');
+    if (rtlBtn) {
+      rtlBtn.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+      });
+    }
+    const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+    if (mobileRtlBtn) {
+      mobileRtlBtn.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          if (mobileToggle && mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        }
+      });
+    }
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        const icon = mobileToggle.querySelector('i');
+        if (mobileMenu.classList.contains('open')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+      mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          if (mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        });
+      });
+    }
+
+    // ====== FAQ ACCORDION ======
+    window.toggleFaq = function(button) {
+      const answer = button.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+      
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+      
+      if (!isOpen) {
+        answer.classList.add('open');
+        button.classList.add('open');
+      }
+    };
+
+    // ====== SMOOTH SCROLL FOR PROCESS DOTS ======
+    document.querySelectorAll('.process-nav-dot').forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const targets = ['#step-1', '#step-2', '#step-3'];
+        document.querySelector(targets[index])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        document.querySelectorAll('.process-nav-dot').forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+
+    // ====== UPDATE ACTIVE DOT ON SCROLL ======
+    const sections = ['#step-1', '#step-2', '#step-3'];
+    const dots = document.querySelectorAll('.process-nav-dot');
+    
+    window.addEventListener('scroll', () => {
+      let current = 0;
+      sections.forEach((id, index) => {
+        const el = document.querySelector(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200) current = index;
+        }
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    });
+  });
+</script>
+</body>
+</html>
+

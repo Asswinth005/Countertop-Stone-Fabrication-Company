@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StoneCraft · Collections — Granite, Quartz &amp; Marble</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+    <!-- Tailwind CSS via CDN -->
+      <script src="tailwind.js"></script>
+
+
+    <!-- Custom Tailwind Configuration — stone palette -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        granite: '#4A4A4A',
+                        quartz: '#E8E3DC',
+                        slate: '#2F2F2F',
+                        marble: '#F5F2EE',
+                        copper: '#B87C4B',
+                        basalt: '#3A3A3A',
+                        travertine: '#D9C9B8',
+                        onyx: '#1E1E1E',
+                        pearl: '#FAF8F5',
+                    },
+                    fontFamily: {
+                        'display': ['"Poppins"', 'system-ui', 'sans-serif'],
+                        'body': ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                        'spin-slow': 'spinSlow 14s linear infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+                        'polish': 'polish 3s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.4s ease-out',
+                    },
+                    keyframes: {
+                        floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+                        spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+                        slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+                        polish: { '0%, 100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(8px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                    },
+                    backgroundImage: {
+                        'stone-pattern': 'radial-gradient(circle at 30% 40%, rgba(184, 124, 75, 0.06) 0%, transparent 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <style>
+        body {
+            background-color: #FAF8F5;
+            color: #1E1E1E;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .dark body {
+            background-color: #1E1E1E;
+            color: #FAF8F5;
+        }
+
+        .dark .text-\[\#1E1E1E\] {
+            color: #FAF8F5;
+        }
+
+        .dark nav.fixed {
+            background-color: rgba(30, 30, 30, 0.95) !important;
+            border-color: rgba(184, 124, 75, 0.2) !important;
+        }
+
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #FAF8F5;
+            border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #B87C4B;
+            border-radius: 10px;
+        }
+
+        .card-stone {
+            background: white;
+            border-radius: 28px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(184, 124, 75, 0.12);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .dark .card-stone {
+            background: #2F2F2F;
+            border-color: rgba(184, 124, 75, 0.2);
+        }
+
+        .card-stone:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(184, 124, 75, 0.2);
+            border-color: #B87C4B;
+        }
+
+        .btn-primary {
+            background-color: #B87C4B;
+            color: #FAF8F5;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(184, 124, 75, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #A0683C;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184, 124, 75, 0.4);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1.5px solid #B87C4B;
+            color: #B87C4B;
+            background: transparent;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: #B87C4B;
+            color: #FAF8F5;
+            transform: translateY(-2px);
+        }
+
+        .dark .btn-outline:hover {
+            background-color: #B87C4B !important;
+            color: #FAF8F5 !important;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background-color: #B87C4B;
+            transition: width 0.25s ease;
+            border-radius: 3px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-studio {
+            position: relative;
+        }
+
+        .dropdown-studio-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: white;
+            border-radius: 18px;
+            padding: 0.5rem 0;
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.25s ease;
+            z-index: 1000;
+            border: 1px solid rgba(184, 124, 75, 0.15);
+        }
+
+        .dark .dropdown-studio-menu {
+            background: #2F2F2F;
+            border-color: rgba(184, 124, 75, 0.25);
+        }
+
+        .dropdown-studio:hover .dropdown-studio-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 1.4rem;
+            transition: all 0.2s;
+            color: #1E1E1E;
+        }
+
+        .dark .dropdown-item {
+            color: #FAF8F5;
+        }
+
+        .dropdown-item:hover {
+            background-color: #FAF8F5;
+            color: #1E1E1E;
+            padding-left: 1.7rem;
+        }
+
+        .dropdown-item i {
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        .mobile-menu-studio {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 0 24px 24px;
+        }
+
+        .dark .mobile-menu-studio {
+            background: #2F2F2F;
+        }
+
+        .mobile-menu-studio.open {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .social-icon-studio {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FAF8F5;
+            color: #1E1E1E;
+            transition: all 0.3s;
+        }
+
+        .social-icon-studio:hover {
+            background-color: #B87C4B;
+            color: #FAF8F5;
+            transform: translateY(-3px);
+        }
+
+        .dark .social-icon-studio {
+            background-color: #2F2F2F;
+            color: #FAF8F5;
+        }
+
+        .dark .social-icon-studio:hover {
+            background-color: #B87C4B;
+            color: #FAF8F5;
+        }
+
+        [dir="rtl"] .ml-auto {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+        }
+
+        [dir="rtl"] .border-l-4 {
+            border-left-width: 0 !important;
+            border-right-width: 4px !important;
+        }
+
+        [dir="rtl"] .ms-1 {
+            margin-left: 0 !important;
+            margin-right: 0.25rem !important;
+        }
+
+        html[dir="rtl"] .dropdown-studio-menu {
+            left: auto;
+            right: 0;
+        }
+
+        [dir="rtl"] .dropdown-item i {
+            margin-right: 0;
+            margin-left: 0.75rem;
+        }
+
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 1.4rem;
+            padding-right: 1.7rem;
+        }
+
+        /* Products page specific */
+        .filter-chip {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            border: 1.5px solid rgba(184, 124, 75, 0.25);
+            background: transparent;
+            color: #1E1E1E;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .dark .filter-chip {
+            color: #FAF8F5;
+            border-color: rgba(184, 124, 75, 0.4);
+        }
+
+        .filter-chip:hover {
+            border-color: #B87C4B;
+            background: rgba(184, 124, 75, 0.08);
+        }
+
+        .filter-chip.active {
+            background: #B87C4B;
+            color: #FAF8F5;
+            border-color: #B87C4B;
+            box-shadow: 0 4px 12px rgba(184, 124, 75, 0.35);
+        }
+
+        .color-swatch {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-swatch.active {
+            border-color: #B87C4B;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 3px rgba(184, 124, 75, 0.25);
+        }
+
+        .color-swatch.active::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card-stone {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            border: 1px solid rgba(184, 124, 75, 0.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .dark .product-card-stone {
+            background: #2F2F2F;
+            border-color: rgba(184, 124, 75, 0.18);
+        }
+
+        .product-card-stone:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 40px -12px rgba(184, 124, 75, 0.3);
+            border-color: #B87C4B;
+        }
+
+        .product-card-stone .p-5 {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+        }
+
+        .product-card-stone h3 {
+            min-height: 2.75rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.375rem;
+        }
+
+        .product-card-stone p {
+            min-height: 2.25rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card-stone .card-footer,
+        .product-card-stone .p-5 > div:last-child {
+            margin-top: auto !important;
+        }
+
+        .slab-preview {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background: #E8E3DC;
+        }
+
+        .slab-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .product-card-stone:hover .slab-preview img {
+            transform: scale(1.08);
+        }
+
+        .material-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .sort-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23B87C4B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .no-results {
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="stone-pattern">
+
+    <!-- ======== NAVIGATION (same structure) ======== -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/95 dark:bg-[#1E1E1E]/95 backdrop-blur-md border-b border-[#FAF8F5]/40 dark:border-[#FAF8F5]/10 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0 relative">
+                <!-- Logo — StoneCraft -->
+                <a class="flex items-center gap-2 md:gap-3 group shrink-0" href="index.html">
+                    <div
+                        class="w-9 h-9 md:w-10 md:h-10 bg-copper rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300 overflow-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5"
+                            fill="none">
+                            <!-- Isometric Stone Slab with Waterfall Edge -->
+                            <polygon points="18,4 31,11.5 18,19 5,11.5" fill="white" opacity="0.95"/>
+                            <polygon points="5,11.5 18,19 18,31 5,23.5" fill="white" opacity="0.8"/>
+                            <polygon points="18,19 31,11.5 31,23.5 18,31" fill="white" opacity="0.6"/>
+                            <!-- Natural Marble Vein -->
+                            <path d="M10 11 Q15 14 25 9" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+                            <path d="M14 17.5 Q15 21 11 25" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+                            <!-- Diamond Sparkle Accent -->
+                            <path d="M27 4 L28 6 L30 7 L28 8 L27 10 L26 8 L24 7 L26 6 Z" fill="white" opacity="0.95"/>
+                            <circle cx="7" cy="8" r="0.9" fill="white" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span
+                                class="text-[#1E1E1E] dark:text-[#FAF8F5]">Stone</span><span
+                                class="text-copper">Craft</span></span>
+                    </div>
+                </a>
+
+                <!-- Centered Desktop Navigation -->
+                <div class="hidden xl:flex items-center justify-center gap-6 absolute left-1/2 -translate-x-1/2">
+                    <div class="dropdown-studio">
+                        <button
+                            class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition flex items-center gap-1 py-2 whitespace-nowrap text-base">
+                            Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+                        </button>
+                        <div class="dropdown-studio-menu">
+                            <a class="dropdown-item" href="index.html"> Home 1</a>
+                            <a class="dropdown-item" href="home2.html"> Home 2</a>
+                        </div>
+                    </div>
+                    <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base"
+                        href="about.html">About</a>
+                    <a class="nav-link text-copper font-medium transition whitespace-nowrap text-base"
+                        href="product.html">Products</a>
+                    <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base"
+                        href="gallery.html">Gallery</a>
+                    <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base"
+                        href="process.html">Process</a>
+                    <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base"
+                        href="contact.html">Contact</a>
+                </div>
+
+                <!-- Desktop actions & Mobile toggle -->
+                <div class="flex items-center gap-3 xl:gap-4 ms-auto">
+                    <a href="contact.html"
+                        class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                    <button id="theme-toggle"
+                        class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="rtl-toggle"
+                        class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center font-bold text-base">
+                        ?
+                    </button>
+
+                    <!-- Mobile toggle -->
+                    <button id="mobile-toggle"
+                        class="xl:hidden w-10 h-10 rounded-full bg-copper text-[#FAF8F5] flex items-center justify-center shadow-md">
+                        <i class="fas fa-bars text-base"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="mobile-menu-studio xl:hidden">
+                <div class="py-4 px-3 space-y-1">
+                    <div class="py-1">
+                        <button
+                            onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')"
+                            class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] border-l-4 border-copper/30 hover:border-copper bg-copper/5 rounded-xl transition cursor-pointer">
+                            <span>Home</span>
+                            <i id="home-mobile-icon"
+                                class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+                        </button>
+                        <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+                            <a class="block py-2.5 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
+                                href="index.html">Home 1</a>
+                            <a class="block py-2.5 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
+                                href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
+                        href="about.html">About</a>
+                    <a class="block py-3 px-4 font-medium text-copper bg-copper/5 border-l-4 border-copper rounded-xl transition"
+                        href="product.html">Products</a>
+                    <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
+                        href="gallery.html">Gallery</a>
+                    <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
+                        href="process.html">Process</a>
+                    <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
+                        href="contact.html">Contact</a>
+                    <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10">
+                        <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
+                            href="contact.html">
+                            <i class="fas fa-calendar-check"></i> Book Now
+                        </a>
+                        <div class="flex gap-3">
+                            <button id="mobile-theme-toggle"
+                                class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
+                                <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i>
+                                Theme
+                            </button>
+                            <button id="mobile-rtl-toggle"
+                                class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
+                                ? RTL
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======== PRODUCTS HERO ======== -->
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-28 overflow-hidden bg-[#1E1E1E]">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/products-hero.jpg" alt="Luxury Stone Slab Gallery" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1E1E1E]/85 via-[#1E1E1E]/65 to-[#1E1E1E]/95"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center animate-slide-up">
+                <!-- Centered Breadcrumbs -->
+                <nav class="flex items-center justify-center gap-2 text-sm text-[#FAF8F5]/70 mb-5 bg-transparent">
+                    <a href="index.html" class="hover:text-copper transition flex items-center gap-1.5">
+                        <i class="fas fa-home text-xs"></i> Home
+                    </a>
+                    <i class="fas fa-chevron-right text-[10px] text-copper/60"></i>
+                    <span class="text-copper font-medium">Collections</span>
+                </nav>
+
+                <!-- Heading -->
+                <h1
+                    class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-[#FAF8F5] leading-tight mb-5 drop-shadow-[0_5px_20px_rgba(0,0,0,0.8)]">
+                    Stone <span class="text-copper">Collections</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg md:text-xl text-[#FAF8F5]/80 max-w-2xl mx-auto leading-relaxed mb-9">
+                    Browse our full range of granite, quartz, marble, and specialty stone surfaces. Filter by material,
+                    color, and finish to find the perfect slab for your project.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="#products-catalog"
+                        class="btn-primary px-8 py-3.5 rounded-full inline-flex items-center gap-2 text-base font-bold shadow-xl hover:scale-105 transition duration-300">
+                        <i class="fas fa-layer-group"></i> Browse Slabs
+                    </a>
+                    <a href="contact.html"
+                        class="border border-[#FAF8F5]/30 hover:border-copper text-[#FAF8F5] hover:bg-copper hover:text-white px-8 py-3.5 rounded-full inline-flex items-center gap-2 text-base font-medium backdrop-blur-sm transition duration-300">
+                        <i class="fas fa-file-invoice-dollar"></i> Get a Free Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FILTER & PRODUCTS SECTION ======== -->
+    <section id="products-catalog" class="py-16 md:py-20 bg-[#FAF8F5] dark:bg-[#1E1E1E]">
+        <div class="container mx-auto px-6">
+
+            <!-- Filter Bar -->
+            <div
+                class="bg-white dark:bg-[#2F2F2F] rounded-3xl p-6 md:p-8 shadow-lg border border-copper/10 mb-12 animate-fadeIn">
+
+                <!-- Material Filters -->
+                <div class="mb-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-mountain text-copper"></i>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-sm uppercase tracking-wider">
+                            Material</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-chip active" data-material="all">All Materials</button>
+                        <button class="filter-chip" data-material="granite">Granite</button>
+                        <button class="filter-chip" data-material="quartz">Quartz</button>
+                        <button class="filter-chip" data-material="marble">Marble</button>
+                        <button class="filter-chip" data-material="travertine">Travertine</button>
+                        <button class="filter-chip" data-material="onyx">Onyx</button>
+                        <button class="filter-chip" data-material="soapstone">Soapstone</button>
+                    </div>
+                </div>
+
+                <!-- Color Filters -->
+                <div class="mb-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-palette text-copper"></i>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-sm uppercase tracking-wider">Color
+                        </h3>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button class="color-swatch active" data-color="all"
+                            style="background: linear-gradient(135deg, #fff 0%, #fff 45%, #1E1E1E 55%, #1E1E1E 100%);"
+                            title="All Colors"></button>
+                        <button class="color-swatch" data-color="white" style="background: #F5F2EE;"
+                            title="White"></button>
+                        <button class="color-swatch" data-color="black" style="background: #1E1E1E;"
+                            title="Black"></button>
+                        <button class="color-swatch" data-color="gray" style="background: #8A8A8A;"
+                            title="Gray"></button>
+                        <button class="color-swatch" data-color="beige" style="background: #D9C9B8;"
+                            title="Beige"></button>
+                        <button class="color-swatch" data-color="brown" style="background: #6B4F3A;"
+                            title="Brown"></button>
+                        <button class="color-swatch" data-color="gold" style="background: #C9A227;"
+                            title="Gold"></button>
+                        <button class="color-swatch" data-color="green" style="background: #4A6741;"
+                            title="Green"></button>
+                        <button class="color-swatch" data-color="blue" style="background: #4A6B8A;"
+                            title="Blue"></button>
+                        <button class="color-swatch" data-color="red" style="background: #8A3A3A;" title="Red"></button>
+                    </div>
+                </div>
+
+                <!-- Sort & Results -->
+                <div
+                    class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-5 border-t border-copper/10">
+                    <div class="text-sm text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">
+                        Showing <span id="result-count" class="font-bold text-copper">12</span> of <span
+                            class="font-bold">12</span> surfaces
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <label class="text-sm font-medium text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70">Sort by:</label>
+                        <select id="sort-select"
+                            class="sort-select bg-[#FAF8F5] dark:bg-[#1E1E1E] border border-copper/20 rounded-full px-4 py-2 text-sm font-medium text-[#1E1E1E] dark:text-[#FAF8F5] focus:outline-none focus:border-copper transition cursor-pointer">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name A-Z</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                <!-- Product 1: Calacatta Gold Quartz -->
+                <div class="product-card-stone" data-material="quartz" data-color="white" data-price="109"
+                    data-name="Calacatta Gold Quartz">
+                    <div class="slab-preview">
+                        <img src="assets/Calacatta Gold Quartz.png" alt="Calacatta Gold Quartz">
+                        <span class="material-badge bg-copper/90 text-white">Quartz</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.8)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Calacatta Gold Quartz
+                        </h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">White base with
+                            bold gold and gray veining. Polished finish.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$109</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Absolute Black Granite -->
+                <div class="product-card-stone" data-material="granite" data-color="black" data-price="89"
+                    data-name="Absolute Black Granite">
+                    <div class="slab-preview">
+                        <img src="assets/Absolute Black Granite.jpg" alt="Absolute Black Granite">
+                        <span class="material-badge bg-[#1E1E1E]/90 text-white">Granite</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(5.0)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Absolute Black Granite
+                        </h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Deep jet-black
+                            with subtle silver speckling. Honed or polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$89</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Carrara Marble -->
+                <div class="product-card-stone" data-material="marble" data-color="white" data-price="149"
+                    data-name="Carrara Marble">
+                    <div class="slab-preview">
+                        <img src="assets/Carrara Marble.jpg" alt="Carrara Marble">
+                        <span class="material-badge bg-[#D9C9B8]/90 text-[#1E1E1E]">Marble</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.9)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Carrara Marble</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Classic white
+                            with soft gray veining. Honed finish.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$149</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Bianco Antico Granite -->
+                <div class="product-card-stone" data-material="granite" data-color="gray" data-price="99"
+                    data-name="Bianco Antico Granite">
+                    <div class="slab-preview">
+                        <img src="assets/Bianco Antico Granite.jpg" alt="Bianco Antico Granite">
+                        <span class="material-badge bg-[#8A8A8A]/90 text-white">Granite</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.7)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Bianco Antico Granite
+                        </h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Creamy white
+                            with gray &amp; burgundy flecks. Polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$99</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Statuario Marble -->
+                <div class="product-card-stone" data-material="marble" data-color="white" data-price="179"
+                    data-name="Statuario Marble">
+                    <div class="slab-preview">
+                        <img src="assets/Statuario Marble.jpg" alt="Statuario Marble">
+                        <span class="material-badge bg-[#D9C9B8]/90 text-[#1E1E1E]">Marble</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(5.0)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Statuario Marble</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Dramatic white
+                            with bold gray veining. Polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$179</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Santa Cecilia Granite -->
+                <div class="product-card-stone" data-material="granite" data-color="beige" data-price="79"
+                    data-name="Santa Cecilia Granite">
+                    <div class="slab-preview">
+                        <img src="assets/ho2.jpg" alt="Santa Cecilia Granite">
+                        <span class="material-badge bg-[#D9C9B8]/90 text-[#1E1E1E]">Granite</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.6)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Santa Cecilia Granite
+                        </h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Warm beige with
+                            golden &amp; gray speckles. Polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$79</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: Caesarstone Quartz White -->
+                <div class="product-card-stone" data-material="quartz" data-color="white" data-price="119"
+                    data-name="Caesarstone Quartz White">
+                    <div class="slab-preview">
+                        <img src="assets/Caesarstone Quartz White.jpg" alt="Caesarstone Quartz White">
+                        <span class="material-badge bg-copper/90 text-white">Quartz</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.9)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Caesarstone Quartz White
+                        </h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Pure white with
+                            subtle sparkle. Non-porous &amp; stain-resistant.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$119</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: Travertine Classic -->
+                <div class="product-card-stone" data-material="travertine" data-color="beige" data-price="69"
+                    data-name="Travertine Classic">
+                    <div class="slab-preview">
+                        <img src="assets/Travertine Classic.jpg" alt="Travertine Classic">
+                        <span class="material-badge bg-[#C9A227]/90 text-white">Travertine</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.5)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Travertine Classic</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Warm beige with
+                            natural pits &amp; linear veining. Honed &amp; filled.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$69</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9: Blue Pearl Granite -->
+                <div class="product-card-stone" data-material="granite" data-color="blue" data-price="109"
+                    data-name="Blue Pearl Granite">
+                    <div class="slab-preview">
+                        <img src="assets/Blue Pearl Granite.jpg" alt="Blue Pearl Granite">
+                        <span class="material-badge bg-[#4A6B8A]/90 text-white">Granite</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.8)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Blue Pearl Granite</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Iridescent
+                            blue-gray with pearl-like flecks. Polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$109</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10: Onyx Honey -->
+                <div class="product-card-stone" data-material="onyx" data-color="gold" data-price="199"
+                    data-name="Onyx Honey">
+                    <div class="slab-preview">
+                        <img src="assets/ho1.jpg" alt="Onyx Honey">
+                        <span class="material-badge bg-[#C9A227]/90 text-white">Onyx</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(5.0)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Onyx Honey</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Translucent
+                            golden honey with dramatic veining. Polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$199</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11: Soapstone Gray -->
+                <div class="product-card-stone" data-material="soapstone" data-color="gray" data-price="89"
+                    data-name="Soapstone Gray">
+                    <div class="slab-preview">
+                        <img src="assets/Soapstone Gray.jpg" alt="Soapstone Gray">
+                        <span class="material-badge bg-[#8A8A8A]/90 text-white">Soapstone</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star-half-stroke text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.6)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Soapstone Gray</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Soft gray with
+                            subtle veining. Matte, naturally non-porous.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$89</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12: Taj Mahal Quartzite -->
+                <div class="product-card-stone" data-material="quartz" data-color="beige" data-price="139"
+                    data-name="Taj Mahal Quartzite">
+                    <div class="slab-preview">
+                        <img src="assets/ho3.webp" alt="Taj Mahal Quartzite">
+                        <span class="material-badge bg-copper/90 text-white">Quartzite</span>
+                        <button
+                            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-copper hover:bg-copper hover:text-white transition shadow z-10">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i><i
+                                class="fas fa-star text-amber-400 text-xs"></i>
+                            <span class="text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 text-xs ml-1">(4.9)</span>
+                        </div>
+                        <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1 text-base">Taj Mahal Quartzite</h3>
+                        <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-xs mb-4 leading-relaxed">Creamy beige
+                            with subtle gold veining. Polished.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-copper/10 mt-auto">
+                            <div>
+                                <span class="text-copper font-extrabold text-lg">$139</span>
+                                <span class="text-[#1E1E1E]/40 dark:text-[#FAF8F5]/40 text-xs ml-1">/ sq ft</span>
+                            </div>
+                            <a href="product-detail.html"
+                                class="bg-copper text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#A0683C] transition shadow-md flex items-center gap-1.5">
+                                View <i class="fas fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="no-results text-center py-20">
+                <i class="fas fa-search text-5xl text-copper/30 mb-4"></i>
+                <h3 class="text-2xl font-display font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2">No surfaces found
+                </h3>
+                <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Try adjusting your filters to see more results.</p>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-12">
+                <button
+                    class="btn-outline px-10 py-3.5 rounded-full font-semibold inline-flex items-center gap-2 hover:scale-105 transition">
+                    <i class="fas fa-rotate-right"></i> Load More Surfaces
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ======== ARTISAN FABRICATION STANDARDS ======== -->
+    <section class="py-16 md:py-20 bg-[#F5F2EE]/60 dark:bg-[#151515] border-t border-b border-copper/10">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-copper">The StoneCraft Standard</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mt-2 mb-3">
+                    Precision From Quarry to Countertop
+                </h2>
+                <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 text-sm leading-relaxed">
+                    Every slab undergoes digital calibration and artisan finishing to deliver flawless surfaces.
+                </p>
+            </div>
+
+            <!-- 3 Clean Value Pillars -->
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="p-6 rounded-2xl bg-white dark:bg-[#1E1E1E] border border-copper/15 text-center shadow-sm hover:border-copper/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-copper/10 text-copper flex items-center justify-center text-xl mb-4 mx-auto">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Laser 3D Templating</h3>
+                    <p class="text-xs text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65 leading-relaxed">
+                        Millimeter-accurate digital spatial capture guarantees a perfect fit along walls and custom cabinetry.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white dark:bg-[#1E1E1E] border border-copper/15 text-center shadow-sm hover:border-copper/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-copper/10 text-copper flex items-center justify-center text-xl mb-4 mx-auto">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">5-Axis Waterjet Cut</h3>
+                    <p class="text-xs text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65 leading-relaxed">
+                        Continuous vein-matching, seamless mitered waterfall drops, and chip-free designer edge profiles.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white dark:bg-[#1E1E1E] border border-copper/15 text-center shadow-sm hover:border-copper/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-copper/10 text-copper flex items-center justify-center text-xl mb-4 mx-auto">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Lifetime Craft Warranty</h3>
+                    <p class="text-xs text-[#1E1E1E]/65 dark:text-[#FAF8F5]/65 leading-relaxed">
+                        White-glove leveling, invisible color-matched epoxy seams, and deep penetrating sealer protection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== CTA BANNER ======== -->
+    <section class="py-20 bg-copper dark:bg-[#1E1E1E]">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <div class="inline-block mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none">
+                        <!-- Isometric Countertop Island with Waterfall Edge -->
+                        <polygon points="32,7 55,20 32,33 9,20" fill="white" opacity="0.95"/>
+                        <polygon points="9,20 32,33 32,55 9,42" fill="white" opacity="0.8"/>
+                        <polygon points="32,33 55,20 55,42 32,55" fill="white" opacity="0.6"/>
+                        <!-- Natural Vein Line -->
+                        <path d="M18 19 Q27 25 45 16" stroke="#B87C4B" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M25 30 Q27 37 19 44" stroke="#B87C4B" stroke-width="2.2" stroke-linecap="round"/>
+                        <!-- Diamond Sparkle Accent -->
+                        <path d="M48 7 L50 11 L54 13 L50 15 L48 19 L46 15 L42 13 L46 11 Z" fill="white" opacity="0.95"/>
+                        <circle cx="13" cy="14" r="1.5" fill="white" opacity="0.8"/>
+                    </svg>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-[#FAF8F5] mb-4">Need Help <span
+                        class="text-[#FAF8F5]">Choosing?</span></h2>
+                <p class="text-[#FAF8F5]/90 text-lg mb-8">Our stone specialists can help you select the perfect surface
+                    for your project. Book a free consultation.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html"
+                        class="bg-[#FAF8F5] text-copper px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition inline-flex items-center gap-2"><i
+                            class="fas fa-calendar-check"></i> Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FOOTER (same structure) ======== -->
+    <footer
+        class="bg-[#FAF8F5] dark:bg-[#1E1E1E] text-[#1E1E1E] dark:text-[#FAF8F5] pt-16 pb-8 border-t-4 border-copper transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="text-center md:text-start">
+                    <a href="index.html"
+                        class="inline-flex items-center justify-center md:justify-start gap-3 mb-6 group hover:opacity-90 transition">
+                        <div
+                            class="w-9 h-9 md:w-10 md:h-10 bg-copper rounded-xl flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5"
+                                fill="none">
+                                <!-- Isometric Stone Slab with Waterfall Edge -->
+                                <polygon points="18,4 31,11.5 18,19 5,11.5" fill="white" opacity="0.95"/>
+                                <polygon points="5,11.5 18,19 18,31 5,23.5" fill="white" opacity="0.8"/>
+                                <polygon points="18,19 31,11.5 31,23.5 18,31" fill="white" opacity="0.6"/>
+                                <!-- Natural Marble Vein -->
+                                <path d="M10 11 Q15 14 25 9" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+                                <path d="M14 17.5 Q15 21 11 25" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+                                <!-- Diamond Sparkle Accent -->
+                                <path d="M27 4 L28 6 L30 7 L28 8 L27 10 L26 8 L24 7 L26 6 Z" fill="white" opacity="0.95"/>
+                                <circle cx="7" cy="8" r="0.9" fill="white" opacity="0.8"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span
+                                class="text-[#1E1E1E] dark:text-[#FAF8F5]">Stone</span><span
+                                class="text-copper">Craft</span></span>
+                    </a>
+                    <p class="mb-5 text-[#1E1E1E] dark:text-[#FAF8F5] text-sm">Precision stone fabrication &amp; premium
+                        countertops. Crafted for life.</p>
+                    <div class="flex justify-center md:justify-start gap-3">
+                        <a href="#" class="social-icon-studio"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon-studio"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon-studio"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-start">
+                    <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Explore
+                    </h4>
+                    <ul class="space-y-2">
+                        <li><a href="product.html"
+                                class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Products</a>
+                        </li>
+                        <li><a href="gallery.html"
+                                class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Gallery</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">
+                        Community</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html"
+                                class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">About</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Contact</a>
+                        </li>
+                        <li><a href="#"
+                                class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Showroom
+                    </h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i
+                                class="fas fa-map-marker-alt text-copper mt-1"></i><span>42 Quarry Lane, Stone
+                                District</span></li>
+                        <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i
+                                class="fas fa-phone text-copper"></i><span>(555) 876-4268</span></li>
+                        <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i
+                                class="fas fa-envelope text-copper"></i><span>hello@stonecraft.com</span></li>
+                        <li
+                            class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5] text-sm">
+                            <i class="fas fa-clock text-copper"></i><span>Mon–Sat 9am – 6pm</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mt-12 pt-8 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10 text-center text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">
+                <p>&copy; 2026 StoneCraft · Countertop &amp; Stone Fabrication. <i
+                        class="fas fa-gem text-copper mx-1"></i> Built on precision, finished with care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== SCRIPTS (same functionality + filter logic) ======== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme toggle
+            const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+            themeBtns.forEach(btn => {
+                btn?.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            });
+            if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+
+            // RTL
+            function setRTL(isRTL) {
+                const html = document.documentElement;
+                if (isRTL === 'rtl' || isRTL === true) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); }
+                else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+            }
+            const savedDir = localStorage.getItem('dir');
+            if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+            else document.documentElement.setAttribute('dir', 'ltr');
+
+            const rtlBtn = document.getElementById('rtl-toggle');
+            if (rtlBtn) {
+                rtlBtn.addEventListener('click', () => {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+                });
+            }
+            const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+            if (mobileRtlBtn) {
+                mobileRtlBtn.addEventListener('click', () => {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const mobileToggle = document.getElementById('mobile-toggle');
+                    if (mobileMenu && mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        if (mobileToggle && mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+
+            // Mobile menu
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                    const icon = mobileToggle.querySelector('i');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                        if (mobileToggle.querySelector('i')) {
+                            mobileToggle.querySelector('i').classList.remove('fa-times');
+                            mobileToggle.querySelector('i').classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+
+            // ====== FILTER & SORT LOGIC ======
+            const materialChips = document.querySelectorAll('.filter-chip[data-material]');
+            const colorSwatches = document.querySelectorAll('.color-swatch[data-color]');
+            const productCards = document.querySelectorAll('#products-grid .product-card-stone');
+            const resultCount = document.getElementById('result-count');
+            const noResults = document.getElementById('no-results');
+            const sortSelect = document.getElementById('sort-select');
+
+            let activeMaterial = 'all';
+            let activeColor = 'all';
+
+            function applyFilters() {
+                let visibleCount = 0;
+                productCards.forEach(card => {
+                    const cardMaterial = card.getAttribute('data-material');
+                    const cardColor = card.getAttribute('data-color');
+
+                    const materialMatch = activeMaterial === 'all' || cardMaterial === activeMaterial;
+                    const colorMatch = activeColor === 'all' || cardColor === activeColor;
+
+                    if (materialMatch && colorMatch) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                resultCount.textContent = visibleCount;
+                if (visibleCount === 0) {
+                    noResults.classList.add('show');
+                } else {
+                    noResults.classList.remove('show');
+                }
+            }
+
+            materialChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    materialChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    activeMaterial = chip.getAttribute('data-material');
+                    applyFilters();
+                });
+            });
+
+            colorSwatches.forEach(swatch => {
+                swatch.addEventListener('click', () => {
+                    colorSwatches.forEach(s => s.classList.remove('active'));
+                    swatch.classList.add('active');
+                    activeColor = swatch.getAttribute('data-color');
+                    applyFilters();
+                });
+            });
+
+            // Sort functionality
+            sortSelect.addEventListener('change', () => {
+                const sortValue = sortSelect.value;
+                const grid = document.getElementById('products-grid');
+                const cardsArray = Array.from(productCards);
+
+                cardsArray.sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute('data-price'));
+                    const priceB = parseFloat(b.getAttribute('data-price'));
+                    const nameA = a.getAttribute('data-name').toLowerCase();
+                    const nameB = b.getAttribute('data-name').toLowerCase();
+
+                    if (sortValue === 'price-low') return priceA - priceB;
+                    if (sortValue === 'price-high') return priceB - priceA;
+                    if (sortValue === 'name') return nameA.localeCompare(nameB);
+                    return 0; // featured - keep original order
+                });
+
+                cardsArray.forEach(card => grid.appendChild(card));
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+

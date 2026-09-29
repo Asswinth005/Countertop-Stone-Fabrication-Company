@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <filter id="slabShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Rounded Luxury Tile Background -->
+  <rect width="64" height="64" rx="16" fill="#1E1E1E"/>
+  
+  <g filter="url(#slabShadow)">
+    <!-- Top Countertop Surface -->
+    <polygon points="32,10 52,21 32,32 12,21" fill="#C88A58"/>
+    <!-- Left Waterfall Drop Edge -->
+    <polygon points="12,21 32,32 32,52 12,41" fill="#8C582F"/>
+    <!-- Right Dimension Edge -->
+    <polygon points="32,32 52,21 52,41 32,52" fill="#A76F41"/>
+    <!-- Natural Marble Veining -->
+    <path d="M19 20 Q28 25 44 17" stroke="#FAF8F5" stroke-width="2" stroke-linecap="round"/>
+    <path d="M26 30 Q28 36 20 42" stroke="#FAF8F5" stroke-width="2" stroke-linecap="round"/>
+    <!-- Diamond Glint Sparkle -->
+    <path d="M47 8 L49 12 L53 14 L49 16 L47 20 L45 16 L41 14 L45 12 Z" fill="#FFFFFF"/>
+    <circle cx="16" cy="15" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+</svg>

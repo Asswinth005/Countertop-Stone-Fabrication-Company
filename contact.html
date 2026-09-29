@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StoneCraft · Contact — Let's Build Something Beautiful</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <!-- Tailwind CSS via CDN -->
+    <script src="tailwind.js"></script>
+
+
+  <!-- Custom Tailwind Configuration — stone palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            granite: '#4A4A4A',
+            quartz: '#E8E3DC',
+            slate: '#2F2F2F',
+            marble: '#F5F2EE',
+            copper: '#B87C4B',
+            basalt: '#3A3A3A',
+            travertine: '#D9C9B8',
+            onyx: '#1E1E1E',
+            pearl: '#FAF8F5',
+          },
+          fontFamily: {
+            'display': ['"Poppins"', 'system-ui', 'sans-serif'],
+            'body': ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'spin-slow': 'spinSlow 14s linear infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'bounce-gentle': 'bounceGentle 2.5s ease-in-out infinite',
+            'polish': 'polish 3s ease-in-out infinite',
+            'fadeIn': 'fadeIn 0.5s ease-out',
+            'pulse-ring': 'pulseRing 2s ease-out infinite',
+          },
+          keyframes: {
+            floatSlow: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+            spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+            slideUp: { '0%': { transform: 'translateY(40px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+            bounceGentle: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+            polish: { '0%, 100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+            fadeIn: { '0%': { opacity: '0', transform: 'translateY(12px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            pulseRing: { '0%': { transform: 'scale(0.9)', opacity: '0.7' }, '100%': { transform: 'scale(1.6)', opacity: '0' } },
+          },
+          backgroundImage: {
+            'stone-pattern': 'radial-gradient(circle at 30% 40%, rgba(184, 124, 75, 0.06) 0%, transparent 70%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E1E1E;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .dark body {
+      background-color: #1E1E1E;
+      color: #FAF8F5;
+    }
+    .dark .text-\[\#1E1E1E\] { color: #FAF8F5; }
+
+    .dark nav.fixed {
+      background-color: rgba(30, 30, 30, 0.95) !important;
+      border-color: rgba(184, 124, 75, 0.2) !important;
+    }
+
+    body::-webkit-scrollbar { width: 6px; }
+    body::-webkit-scrollbar-track { background: #FAF8F5; border-radius: 10px; }
+    body::-webkit-scrollbar-thumb { background: #B87C4B; border-radius: 10px; }
+
+    .card-stone {
+      background: white;
+      border-radius: 28px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(184, 124, 75, 0.12);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    }
+    .dark .card-stone {
+      background: #2F2F2F;
+      border-color: rgba(184, 124, 75, 0.2);
+    }
+    .card-stone:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px -10px rgba(184, 124, 75, 0.2);
+      border-color: #B87C4B;
+    }
+
+    .btn-primary {
+      background-color: #B87C4B;
+      color: #FAF8F5;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(184, 124, 75, 0.3);
+    }
+    .btn-primary:hover {
+      background-color: #A0683C;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(184, 124, 75, 0.4);
+      color: white;
+    }
+    .btn-outline {
+      border: 1.5px solid #B87C4B;
+      color: #B87C4B;
+      background: transparent;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background-color: #B87C4B;
+      color: #FAF8F5;
+      transform: translateY(-2px);
+    }
+    .dark .btn-outline:hover {
+      background-color: #B87C4B !important;
+      color: #FAF8F5 !important;
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2.5px;
+      background-color: #B87C4B;
+      transition: width 0.25s ease;
+      border-radius: 3px;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .dropdown-studio { position: relative; }
+    .dropdown-studio-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: white;
+      border-radius: 18px;
+      padding: 0.5rem 0;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      z-index: 1000;
+      border: 1px solid rgba(184, 124, 75, 0.15);
+    }
+    .dark .dropdown-studio-menu { background: #2F2F2F; border-color: rgba(184, 124, 75, 0.25); }
+    .dropdown-studio:hover .dropdown-studio-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 1.4rem;
+      transition: all 0.2s;
+      color: #1E1E1E;
+    }
+    .dark .dropdown-item { color: #FAF8F5; }
+    .dropdown-item:hover {
+      background-color: #FAF8F5;
+      color: #1E1E1E;
+      padding-left: 1.7rem;
+    }
+    .dropdown-item i { margin-right: 0.75rem; width: 20px; }
+
+    .mobile-menu-studio {
+      background: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 0 0 24px 24px;
+    }
+    .dark .mobile-menu-studio { background: #2F2F2F; }
+    .mobile-menu-studio.open { max-height: 80vh; overflow-y: auto; }
+
+    .social-icon-studio {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FAF8F5;
+      color: #1E1E1E;
+      transition: all 0.3s;
+    }
+    .social-icon-studio:hover {
+      background-color: #B87C4B;
+      color: #FAF8F5;
+      transform: translateY(-3px);
+    }
+    .dark .social-icon-studio { background-color: #2F2F2F; color: #FAF8F5; }
+    .dark .social-icon-studio:hover { background-color: #B87C4B; color: #FAF8F5; }
+
+    [dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+    [dir="rtl"] .border-l-4 { border-left-width: 0 !important; border-right-width: 4px !important; }
+    [dir="rtl"] .ms-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+    html[dir="rtl"] .dropdown-studio-menu { left: auto; right: 0; }
+    [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.75rem; }
+    [dir="rtl"] .dropdown-item:hover { padding-left: 1.4rem; padding-right: 1.7rem; }
+
+    /* Contact page specific */
+    .contact-input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 16px;
+      border: 1.5px solid rgba(184, 124, 75, 0.25);
+      background: transparent;
+      color: #1E1E1E;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+    .dark .contact-input {
+      color: #FAF8F5;
+      border-color: rgba(184, 124, 75, 0.35);
+      background: rgba(30, 30, 30, 0.4);
+    }
+    .contact-input:focus {
+      border-color: #B87C4B;
+      box-shadow: 0 0 0 4px rgba(184, 124, 75, 0.12);
+    }
+    .contact-input::placeholder {
+      color: rgba(30, 30, 30, 0.4);
+    }
+    .dark .contact-input::placeholder {
+      color: rgba(250, 248, 245, 0.4);
+    }
+
+    .contact-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      color: #1E1E1E;
+    }
+    .dark .contact-label { color: #FAF8F5; }
+
+    .inquiry-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .dark .inquiry-card {
+      background: #2F2F2F;
+    }
+    .inquiry-card:hover {
+      border-color: #B87C4B;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px -8px rgba(184, 124, 75, 0.25);
+    }
+    .inquiry-card.selected {
+      border-color: #B87C4B;
+      background: rgba(184, 124, 75, 0.06);
+    }
+    .dark .inquiry-card.selected {
+      background: rgba(184, 124, 75, 0.12);
+    }
+
+    .map-container {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(20%) contrast(1.05);
+    }
+    .dark .map-container iframe {
+      filter: grayscale(60%) invert(90%) contrast(1.1) hue-rotate(180deg);
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+    .map-pin-dot {
+      width: 24px;
+      height: 24px;
+      background: #B87C4B;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+    .map-pin-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #B87C4B;
+      animation: pulseRing 2s ease-out infinite;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(184, 124, 75, 0.15);
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      text-align: left;
+      font-weight: 600;
+      color: #1E1E1E;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .dark .faq-question { color: #FAF8F5; }
+    .faq-question:hover { color: #B87C4B; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 400px;
+      padding-bottom: 1.25rem;
+    }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(184, 124, 75, 0.12);
+      color: #B87C4B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .faq-question.open .faq-icon {
+      background: #B87C4B;
+      color: white;
+      transform: rotate(180deg);
+    }
+
+    .hours-today {
+      background: linear-gradient(135deg, #B87C4B 0%, #A0683C 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hours-today::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+
+    .stone-overlay {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23n)" opacity="0.08"/></svg>');
+    }
+  </style>
+</head>
+<body class="stone-pattern">
+
+<!-- ======== NAVIGATION (same structure) ======== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/95 dark:bg-[#1E1E1E]/95 backdrop-blur-md border-b border-[#FAF8F5]/40 dark:border-[#FAF8F5]/10 shadow-sm">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-24 md:h-24 py-3 md:py-0 relative">
+      <!-- Logo — StoneCraft -->
+      <a class="flex items-center gap-2 md:gap-3 group shrink-0" href="index.html">
+        <div class="w-9 h-9 md:w-10 md:h-10 bg-copper rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300 overflow-hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5" fill="none">
+            <!-- Isometric Stone Slab with Waterfall Edge -->
+            <polygon points="18,4 31,11.5 18,19 5,11.5" fill="white" opacity="0.95"/>
+            <polygon points="5,11.5 18,19 18,31 5,23.5" fill="white" opacity="0.8"/>
+            <polygon points="18,19 31,11.5 31,23.5 18,31" fill="white" opacity="0.6"/>
+            <!-- Natural Marble Vein -->
+            <path d="M10 11 Q15 14 25 9" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M14 17.5 Q15 21 11 25" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- Diamond Sparkle Accent -->
+            <path d="M27 4 L28 6 L30 7 L28 8 L27 10 L26 8 L24 7 L26 6 Z" fill="white" opacity="0.95"/>
+            <circle cx="7" cy="8" r="0.9" fill="white" opacity="0.8"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span class="text-[#1E1E1E] dark:text-[#FAF8F5]">Stone</span><span class="text-copper">Craft</span></span>
+        </div>
+      </a>
+
+      <!-- Centered Desktop Navigation -->
+      <div class="hidden xl:flex items-center justify-center gap-6 absolute left-1/2 -translate-x-1/2">
+        <div class="dropdown-studio">
+          <button class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition flex items-center gap-1 py-2 whitespace-nowrap text-base">
+            Home <i class="fas fa-chevron-down text-xs ms-1"></i>
+          </button>
+          <div class="dropdown-studio-menu">
+            <a class="dropdown-item" href="index.html"> Home 1</a>
+            <a class="dropdown-item" href="home2.html"> Home 2</a>
+          </div>
+        </div>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="about.html">About</a>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="product.html">Products</a>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="gallery.html">Gallery</a>
+        <a class="nav-link text-[#1E1E1E] dark:text-[#FAF8F5] hover:text-copper transition whitespace-nowrap text-base" href="process.html">Process</a>
+        <a class="nav-link text-copper font-medium transition whitespace-nowrap text-base" href="contact.html">Contact</a>
+      </div>
+
+      <!-- Desktop actions & Mobile toggle -->
+      <div class="flex items-center gap-3 xl:gap-4 ms-auto">
+        <a href="contact.html" class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
+          <i class="fas fa-calendar-check"></i> Book Now
+        </a>
+        <button id="theme-toggle" class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:inline"></i>
+        </button>
+        <button id="rtl-toggle" class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center font-bold text-base">
+          ⇄
+        </button>
+
+        <!-- Mobile toggle -->
+        <button id="mobile-toggle" class="xl:hidden w-10 h-10 rounded-full bg-copper text-[#FAF8F5] flex items-center justify-center shadow-md">
+          <i class="fas fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu-studio xl:hidden">
+      <div class="py-4 px-3 space-y-1">
+        <div class="py-1">
+          <button onclick="document.getElementById('home-mobile-drop').classList.toggle('hidden'); document.getElementById('home-mobile-icon').classList.toggle('rotate-180')" class="w-full flex items-center justify-between py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] border-l-4 border-copper/30 hover:border-copper bg-copper/5 rounded-xl transition cursor-pointer">
+            <span>Home</span>
+            <i id="home-mobile-icon" class="fas fa-chevron-down text-xs opacity-60 transition-transform duration-300"></i>
+          </button>
+          <div id="home-mobile-drop" class="hidden pl-2 space-y-1 mt-1 mb-2">
+            <a class="block py-2.5 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="index.html">Home 1</a>
+            <a class="block py-2.5 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="home2.html">Home 2</a>
+          </div>
+        </div>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="about.html">About</a>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="product.html">Products</a>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="gallery.html">Gallery</a>
+        <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition" href="process.html">Process</a>
+        <a class="block py-3 px-4 font-medium text-copper bg-copper/5 border-l-4 border-copper rounded-xl transition" href="contact.html">Contact</a>
+        <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10">
+          <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2" href="contact.html">
+            <i class="fas fa-calendar-check"></i> Book Now
+          </a>
+          <div class="flex gap-3">
+            <button id="mobile-theme-toggle" class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
+              <i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i> Theme
+            </button>
+            <button id="mobile-rtl-toggle" class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
+              ⇄ RTL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== CONTACT HERO ======== -->
+<section class="relative pt-36 pb-24 md:pt-44 md:pb-28 overflow-hidden bg-[#1E1E1E]">
+  <div class="absolute inset-0 z-0">
+    <img src="assets/contact-hero.jpg" alt="Stone showroom interior" class="w-full h-full object-cover opacity-30">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#1E1E1E] via-[#1E1E1E]/85 to-[#1E1E1E]/70"></div>
+    <div class="absolute inset-0 stone-overlay"></div>
+  </div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto text-center animate-slide-up">
+      <nav class="flex items-center justify-center gap-2 text-sm text-[#FAF8F5]/60 mb-6 bg-transparent">
+        <a href="index.html" class="hover:text-copper transition">Home</a>
+        <i class="fas fa-chevron-right text-[10px]"></i>
+        <span class="text-copper font-medium">Contact</span>
+      </nav>
+      <span class="inline-flex items-center gap-2 bg-[#1E1E1E]/80 text-[#FAF8F5] px-5 py-2 rounded-full text-sm font-bold tracking-wide mb-6 border border-copper/40 backdrop-blur-md">
+        <i class="fas fa-comments text-copper"></i> We're Here to Help
+      </span>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-[#FAF8F5] leading-tight mb-6 drop-shadow-[0_5px_20px_rgba(0,0,0,0.8)]">
+        Let's Build <span class="text-copper">Something Beautiful</span>
+      </h1>
+      <p class="text-lg md:text-xl text-[#FAF8F5]/80 max-w-2xl mx-auto leading-relaxed mb-10">
+        Whether you're planning a kitchen remodel, a commercial build, or just have a question about stone — we'd love to hear from you.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#contact-form" class="btn-primary px-8 py-3 rounded-full inline-flex items-center gap-2 text-base shadow-xl">
+          <i class="fas fa-paper-plane"></i> Send a Message
+        </a>
+        <a href="tel:+15558764268" class="border border-[#FAF8F5]/30 text-[#FAF8F5] hover:bg-[#FAF8F5]/10 px-8 py-3 rounded-full inline-flex items-center gap-2 text-base backdrop-blur-sm transition">
+          <i class="fas fa-phone"></i> Call (555) 876-4268
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SECTION 2: DIRECT CONTACT CHANNELS ======== -->
+<section class="py-20 bg-[#F5F2EE] dark:bg-[#1A1A1A] border-b border-copper/15 relative overflow-hidden">
+  <!-- Subtle decorative ambient accents -->
+  <div class="absolute -top-24 -right-24 w-72 h-72 bg-copper/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-copper/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
+        <i class="fas fa-address-book"></i> Connect With Us
+      </span>
+      <h2 class="text-3xl md:text-4xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5]">
+        Direct <span class="text-copper">Channels</span>
+      </h2>
+      <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mt-3 max-w-xl mx-auto text-sm md:text-base">
+        Get in touch with our fabrication specialists, showroom consultants, or support team.
+      </p>
+    </div>
+
+    <!-- 4 Direct Channels Grid: 2x2 in iPad Pro view (md/lg), 4-col in desktop (xl) -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <!-- Card 1 -->
+      <a href="tel:+15558764268" class="card-stone p-6 flex items-start gap-4 hover:-translate-y-2 transition duration-300 group h-full">
+        <div class="w-12 h-12 rounded-2xl bg-copper/12 flex items-center justify-center text-copper shrink-0 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-phone text-lg"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold uppercase tracking-wider text-copper mb-1">Call Us</div>
+          <div class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-base mb-1 whitespace-nowrap">(555) 876-4268</div>
+          <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Mon–Sat, 9am–6pm</div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="mailto:hello@stonecraft.com" class="card-stone p-6 flex items-start gap-4 hover:-translate-y-2 transition duration-300 group h-full">
+        <div class="w-12 h-12 rounded-2xl bg-copper/12 flex items-center justify-center text-copper shrink-0 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-envelope text-lg"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold uppercase tracking-wider text-copper mb-1">Email</div>
+          <div class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-base mb-1 truncate">hello@stonecraft.com</div>
+          <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Reply within 24h</div>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="#map" class="card-stone p-6 flex items-start gap-4 hover:-translate-y-2 transition duration-300 group h-full">
+        <div class="w-12 h-12 rounded-2xl bg-copper/12 flex items-center justify-center text-copper shrink-0 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-location-dot text-lg"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold uppercase tracking-wider text-copper mb-1">Visit</div>
+          <div class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-base mb-1 whitespace-nowrap">42 Quarry Lane</div>
+          <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Stone District</div>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="#contact-form" class="card-stone p-6 flex items-start gap-4 hover:-translate-y-2 transition duration-300 group h-full">
+        <div class="w-12 h-12 rounded-2xl bg-copper/12 flex items-center justify-center text-copper shrink-0 group-hover:bg-copper group-hover:text-white transition">
+          <i class="fas fa-comments text-lg"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold uppercase tracking-wider text-copper mb-1">Live Chat</div>
+          <div class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-base mb-1 whitespace-nowrap">Chat with us</div>
+          <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Instant support</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== MAIN CONTACT SECTION ======== -->
+<section id="contact-form" class="py-20 md:py-24 bg-[#FAF8F5] dark:bg-[#1E1E1E]">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-10">
+
+      <!-- LEFT: Contact Form (7 cols) -->
+      <div class="lg:col-span-7">
+        <div class="card-stone p-8 md:p-10 animate-fadeIn">
+
+          <div class="mb-8">
+            <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3">
+              <i class="fas fa-paper-plane"></i> Send a Message
+            </span>
+            <h2 class="text-3xl md:text-4xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight">
+              Tell Us About <span class="text-copper">Your Project</span>
+            </h2>
+          </div>
+
+          <!-- Inquiry Type Selector -->
+          <div class="mb-8">
+            <label class="contact-label">I'm interested in...</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <button type="button" class="inquiry-card selected text-center" data-inquiry="residential">
+                <i class="fas fa-home text-copper text-xl mb-2"></i>
+                <div class="font-bold text-xs text-[#1E1E1E] dark:text-[#FAF8F5]">Residential</div>
+              </button>
+              <button type="button" class="inquiry-card text-center" data-inquiry="commercial">
+                <i class="fas fa-building text-copper text-xl mb-2"></i>
+                <div class="font-bold text-xs text-[#1E1E1E] dark:text-[#FAF8F5]">Commercial</div>
+              </button>
+              <button type="button" class="inquiry-card text-center" data-inquiry="trade">
+                <i class="fas fa-tools text-copper text-xl mb-2"></i>
+                <div class="font-bold text-xs text-[#1E1E1E] dark:text-[#FAF8F5]">Trade</div>
+              </button>
+              <button type="button" class="inquiry-card text-center" data-inquiry="other">
+                <i class="fas fa-ellipsis text-copper text-xl mb-2"></i>
+                <div class="font-bold text-xs text-[#1E1E1E] dark:text-[#FAF8F5]">Other</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent. We\'ll reply within 24 hours.');">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="contact-label" for="name">Full Name *</label>
+                <input type="text" id="name" class="contact-input" placeholder="Jane Doe" required>
+              </div>
+              <div>
+                <label class="contact-label" for="email">Email Address *</label>
+                <input type="email" id="email" class="contact-input" placeholder="jane@example.com" required>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="contact-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="contact-input" placeholder="(555) 000-0000">
+              </div>
+              <div>
+                <label class="contact-label" for="project-type">Project Type</label>
+                <select id="project-type" class="contact-input cursor-pointer">
+                  <option value="">Select one...</option>
+                  <option>Kitchen Countertop</option>
+                  <option>Bathroom Vanity</option>
+                  <option>Outdoor Kitchen</option>
+                  <option>Fireplace Surround</option>
+                  <option>Commercial Build</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="contact-label" for="message">Project Details *</label>
+              <textarea id="message" rows="5" class="contact-input resize-none" placeholder="Tell us about your project — dimensions, stone preferences, timeline, etc." required></textarea>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="newsletter" class="mt-1 w-4 h-4 accent-[#B87C4B] cursor-pointer">
+              <label for="newsletter" class="text-sm text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 cursor-pointer">
+                Send me occasional updates about new stone arrivals and design inspiration.
+              </label>
+            </div>
+
+            <div class="pt-3">
+              <button type="submit" class="btn-primary w-full sm:w-auto px-10 py-3.5 rounded-full font-bold inline-flex items-center justify-center gap-2 shadow-lg">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+              <p class="text-xs text-[#1E1E1E]/50 dark:text-[#FAF8F5]/50 mt-3">
+                <i class="fas fa-lock text-copper mr-1"></i> We respect your privacy. Your information is never shared.
+              </p>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Info Panel (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Hours Card -->
+        <div class="hours-today">
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-clock text-xl"></i>
+                <span class="font-bold text-lg">Today's Hours</span>
+              </div>
+              <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full">OPEN</span>
+            </div>
+            <div class="text-3xl font-display font-extrabold mb-1">9:00 AM – 6:00 PM</div>
+            <div class="text-sm text-white/80">Showroom &amp; fabrication consultations</div>
+            <div class="mt-5 pt-4 border-t border-white/20 grid grid-cols-2 gap-3 text-xs">
+              <div>
+                <div class="font-bold mb-1">Mon – Fri</div>
+                <div class="text-white/80">9am – 6pm</div>
+              </div>
+              <div>
+                <div class="font-bold mb-1">Saturday</div>
+                <div class="text-white/80">10am – 4pm</div>
+              </div>
+              <div>
+                <div class="font-bold mb-1">Sunday</div>
+                <div class="text-white/80">Closed</div>
+              </div>
+              <div>
+                <div class="font-bold mb-1">Holidays</div>
+                <div class="text-white/80">By appointment</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showroom Card -->
+        <div class="card-stone p-7">
+          <div class="rounded-2xl overflow-hidden mb-5 h-44 shadow-md">
+            <img src="assets/StoneCraft workshop.jpg" alt="StoneCraft Showroom Exterior" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-2xl bg-copper/12 flex items-center justify-center text-copper">
+              <i class="fas fa-store-alt text-lg"></i>
+            </div>
+            <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-lg">Showroom &amp; Facility</h3>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-map-marker-alt text-copper mt-1 w-4"></i>
+              <div>
+                <div class="font-semibold text-[#1E1E1E] dark:text-[#FAF8F5]">42 Quarry Lane</div>
+                <div class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60">Stone District, SD 12345</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-phone text-copper mt-1 w-4"></i>
+              <div class="text-[#1E1E1E] dark:text-[#FAF8F5]">(555) 876-4268</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-envelope text-copper mt-1 w-4"></i>
+              <div class="text-[#1E1E1E] dark:text-[#FAF8F5]">hello@stonecraft.com</div>
+            </div>
+          </div>
+          <a href="#map" class="mt-5 inline-flex items-center gap-2 text-copper font-bold text-sm hover:gap-3 transition-all">
+            Get Directions <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Social / Follow Card -->
+        <div class="card-stone p-7">
+          <h3 class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] text-lg mb-4">Follow Our Craft</h3>
+          <p class="text-sm text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mb-5">See behind-the-scenes fabrication, new arrivals, and completed projects.</p>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon-studio"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon-studio"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon-studio"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon-studio"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== MAP SECTION ======== -->
+<section id="map" class="py-20 bg-[#F5F2EE] dark:bg-[#1A1A1A] relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+        <i class="fas fa-map-location-dot"></i> Find Us
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight">
+        Visit Our <span class="text-copper">Showroom</span>
+      </h2>
+      <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mt-4 max-w-xl mx-auto text-base">
+        See and feel full slabs in person. Our showroom features over 200 stone varieties on display.
+      </p>
+    </div>
+
+    <div class="map-container h-[420px] md:h-[500px] relative">
+      <!-- Placeholder map (replace with your Google Maps embed) -->
+      <iframe 
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.012%2C40.703%2C-73.998%2C40.712&amp;layer=mapnik" 
+        style="border:0;"
+        loading="lazy"
+        title="StoneCraft Showroom Location">
+      </iframe>
+      <!-- Custom pin overlay -->
+      <div class="map-pin pointer-events-none">
+        <div class="map-pin-ring"></div>
+        <div class="map-pin-dot"></div>
+      </div>
+      <!-- Info card overlay -->
+      <div class="absolute bottom-6 left-6 right-6 md:left-6 md:right-auto md:max-w-sm bg-white dark:bg-[#2F2F2F] rounded-2xl p-5 shadow-2xl border border-copper/15">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-copper flex items-center justify-center text-white shrink-0">
+            <i class="fas fa-store-alt text-lg"></i>
+          </div>
+          <div>
+            <div class="font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-1">StoneCraft Showroom</div>
+            <div class="text-xs text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mb-2">42 Quarry Lane, Stone District, SD 12345</div>
+            <div class="flex items-center gap-2 text-xs text-copper font-semibold">
+              <i class="fas fa-clock"></i> Open until 6:00 PM today
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FAQ SECTION ======== -->
+<section class="py-24 bg-[#FAF8F5] dark:bg-[#1E1E1E]">
+  <div class="container mx-auto px-6">
+
+    <!-- Centered Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-2 bg-copper/15 text-copper px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+        <i class="fas fa-circle-question"></i> Common Questions
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-extrabold text-[#1E1E1E] dark:text-[#FAF8F5] leading-tight">
+        Frequently Asked <span class="text-copper">Questions</span>
+      </h2>
+      <p class="text-[#1E1E1E]/60 dark:text-[#FAF8F5]/60 mt-4 text-base">
+        Quick answers to the questions we hear most. Don't see yours? Just reach out.
+      </p>
+    </div>
+
+    <!-- Centered FAQ Card -->
+    <div class="max-w-4xl mx-auto card-stone p-7 md:p-10">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How long does a typical project take from quote to installation?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Most residential projects take 2–3 weeks from template to installation. This includes fabrication time, edge profiling, and scheduling. Complex projects or special-order stone may take 4–6 weeks. We'll give you a specific timeline with your quote.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do you offer free estimates and templating?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Yes! We provide free estimates for all projects within our service area. Digital templating is included at no extra charge for projects over 30 sq ft. We use laser measurement to ensure a perfect fit on the first installation.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I see and select my actual slab before fabrication?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Absolutely. We encourage it. Our showroom displays over 200 slabs, and we'll walk you through color matching, veining patterns, and finish options. For special orders, we'll notify you when your slab arrives so you can approve it before cutting.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What edge profiles and finishes do you offer?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            We offer a full range of edge profiles: eased, bullnose, bevel, ogee, dupont, waterfall, and more. Finishes include polished, honed, leathered, brushed, and caressed. Our team can help you choose the best combination for your design and lifestyle.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do you handle commercial and bulk orders?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            Yes — we work with builders, developers, architects, and hospitality groups on projects of all sizes. We offer dedicated project managers, volume pricing, and guaranteed delivery timelines. Contact our trade team for a custom quote.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What's the best way to care for my stone countertop?</span>
+          <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">
+            For quartz: mild soap and water. For granite and marble: pH-neutral stone cleaner, reseal annually (we can recommend a schedule). Avoid acidic cleaners on marble. We provide a care guide with every installation and offer maintenance services.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Centered bottom action / prompt -->
+    <div class="text-center mt-10">
+      <a href="#contact-form" class="btn-outline px-7 py-3 rounded-full font-semibold inline-flex items-center gap-2 text-sm hover:scale-105 transition">
+        <i class="fas fa-comment-dots"></i> Still Have Questions? Ask Us Directly
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== CTA BANNER ======== -->
+<section class="py-20 bg-copper dark:bg-[#1A1A1A]">
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <div class="inline-block mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none">
+          <!-- Isometric Countertop Island with Waterfall Edge -->
+          <polygon points="32,7 55,20 32,33 9,20" fill="white" opacity="0.95"/>
+          <polygon points="9,20 32,33 32,55 9,42" fill="white" opacity="0.8"/>
+          <polygon points="32,33 55,20 55,42 32,55" fill="white" opacity="0.6"/>
+          <!-- Natural Vein Line -->
+          <path d="M18 19 Q27 25 45 16" stroke="#B87C4B" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M25 30 Q27 37 19 44" stroke="#B87C4B" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- Diamond Sparkle Accent -->
+          <path d="M48 7 L50 11 L54 13 L50 15 L48 19 L46 15 L42 13 L46 11 Z" fill="white" opacity="0.95"/>
+          <circle cx="13" cy="14" r="1.5" fill="white" opacity="0.8"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-[#FAF8F5] mb-4">
+        Prefer to <span class="text-[#FAF8F5]">Talk?</span>
+      </h2>
+      <p class="text-[#FAF8F5]/90 text-lg mb-8">
+        Call us directly or schedule a private consultation — we're happy to help.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="tel:+15558764268" class="bg-[#FAF8F5] text-copper px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition inline-flex items-center gap-2">
+          <i class="fas fa-phone"></i> (555) 876-4268
+        </a>
+        <a href="contact.html" class="border-2 border-[#FAF8F5] text-[#FAF8F5] px-8 py-3 rounded-full font-semibold hover:bg-[#FAF8F5] hover:text-copper transition">
+          <i class="fas fa-calendar-check"></i> Book Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER (same structure) ======== -->
+<footer class="bg-[#FAF8F5] dark:bg-[#1E1E1E] text-[#1E1E1E] dark:text-[#FAF8F5] pt-16 pb-8 border-t-4 border-copper transition-colors duration-300">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="text-center md:text-start">
+        <a href="index.html" class="inline-flex items-center justify-center md:justify-start gap-3 mb-6 group hover:opacity-90 transition">
+          <div class="w-9 h-9 md:w-10 md:h-10 bg-copper rounded-xl flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-full h-full p-1.5" fill="none">
+              <!-- Isometric Stone Slab with Waterfall Edge -->
+              <polygon points="18,4 31,11.5 18,19 5,11.5" fill="white" opacity="0.95"/>
+              <polygon points="5,11.5 18,19 18,31 5,23.5" fill="white" opacity="0.8"/>
+              <polygon points="18,19 31,11.5 31,23.5 18,31" fill="white" opacity="0.6"/>
+              <!-- Natural Marble Vein -->
+              <path d="M10 11 Q15 14 25 9" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M14 17.5 Q15 21 11 25" stroke="#B87C4B" stroke-width="1.3" stroke-linecap="round"/>
+              <!-- Diamond Sparkle Accent -->
+              <path d="M27 4 L28 6 L30 7 L28 8 L27 10 L26 8 L24 7 L26 6 Z" fill="white" opacity="0.95"/>
+              <circle cx="7" cy="8" r="0.9" fill="white" opacity="0.8"/>
+            </svg>
+          </div>
+          <span class="text-lg md:text-2xl font-display font-bold tracking-tight"><span class="text-[#1E1E1E] dark:text-[#FAF8F5]">Stone</span><span class="text-copper">Craft</span></span>
+        </a>
+        <p class="mb-5 text-[#1E1E1E] dark:text-[#FAF8F5] text-sm">Precision stone fabrication &amp; premium countertops. Crafted for life.</p>
+        <div class="flex justify-center md:justify-start gap-3">
+          <a href="#" class="social-icon-studio"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon-studio"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon-studio"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Explore</h4>
+        <ul class="space-y-2">
+          <li><a href="product.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Products</a></li>
+          <li><a href="gallery.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Community</h4>
+        <ul class="space-y-2">
+          <li><a href="about.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">About</a></li>
+          <li><a href="contact.html" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Contact</a></li>
+          <li><a href="#" class="hover:text-copper transition block text-[#1E1E1E] dark:text-[#FAF8F5]">Careers</a></li>
+        </ul>
+      </div>
+      <div class="text-center md:text-start">
+        <h4 class="text-[#1E1E1E] dark:text-copper font-bold text-lg mb-5 uppercase tracking-wider">Showroom</h4>
+        <ul class="space-y-3">
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i class="fas fa-map-marker-alt text-copper mt-1"></i><span>42 Quarry Lane, Stone District</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i class="fas fa-phone text-copper"></i><span>(555) 876-4268</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5]"><i class="fas fa-envelope text-copper"></i><span>hello@stonecraft.com</span></li>
+          <li class="flex justify-center md:justify-start gap-3 text-[#1E1E1E] dark:text-[#FAF8F5] text-sm"><i class="fas fa-clock text-copper"></i><span>Mon–Sat 9am – 6pm</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10 text-center text-sm text-[#1E1E1E] dark:text-[#FAF8F5]">
+      <p>&copy; 2026 StoneCraft · Countertop &amp; Stone Fabrication. <i class="fas fa-gem text-copper mx-1"></i> Built on precision, finished with care.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ======== SCRIPTS ======== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle
+    const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+    themeBtns.forEach(btn => {
+      btn?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      });
+    });
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+
+    // RTL
+    function setRTL(isRTL) {
+      const html = document.documentElement;
+      if (isRTL === 'rtl' || isRTL === true) { html.setAttribute('dir', 'rtl'); localStorage.setItem('dir', 'rtl'); } 
+      else { html.setAttribute('dir', 'ltr'); localStorage.setItem('dir', 'ltr'); }
+    }
+    const savedDir = localStorage.getItem('dir');
+    if (savedDir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+    else document.documentElement.setAttribute('dir', 'ltr');
+
+    const rtlBtn = document.getElementById('rtl-toggle');
+    if (rtlBtn) {
+      rtlBtn.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+      });
+    }
+    const mobileRtlBtn = document.getElementById('mobile-rtl-toggle');
+    if (mobileRtlBtn) {
+      mobileRtlBtn.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        setRTL(currentDir === 'rtl' ? 'ltr' : 'rtl');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          if (mobileToggle && mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        }
+      });
+    }
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        const icon = mobileToggle.querySelector('i');
+        if (mobileMenu.classList.contains('open')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+      mobileMenu.querySelectorAll('a:not(#mobile-rtl-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          if (mobileToggle.querySelector('i')) {
+            mobileToggle.querySelector('i').classList.remove('fa-times');
+            mobileToggle.querySelector('i').classList.add('fa-bars');
+          }
+        });
+      });
+    }
+
+    // ====== INQUIRY TYPE SELECTOR ======
+    const inquiryCards = document.querySelectorAll('.inquiry-card');
+    inquiryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        inquiryCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+    });
+
+    // ====== FAQ ACCORDION ======
+    window.toggleFaq = function(button) {
+      const answer = button.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+      
+      // Close all others
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+      
+      // Toggle current
+      if (!isOpen) {
+        answer.classList.add('open');
+        button.classList.add('open');
+      }
+    };
+  });
+</script>
+</body>
+</html>
+
+
