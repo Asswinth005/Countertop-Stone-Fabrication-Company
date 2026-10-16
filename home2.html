@@ -442,10 +442,6 @@
 
                 <!-- Desktop actions & Mobile toggle -->
                 <div class="flex items-center gap-3 xl:gap-4 ms-auto">
-                    <a href="contact.html"
-                        class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
-                        <i class="fas fa-calendar-check"></i> Book Now
-                    </a>
                     <button id="theme-toggle"
                         class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center">
                         <i class="fas fa-moon dark:hidden"></i>
@@ -455,6 +451,10 @@
                         class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center font-bold text-base">
                         ⇄
                     </button>
+                    <a href="contact.html"
+                        class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
 
                     <!-- Mobile toggle -->
                     <button id="mobile-toggle"
@@ -493,10 +493,6 @@
                     <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
                         href="contact.html">Contact</a>
                     <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10">
-                        <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
-                            href="contact.html">
-                            <i class="fas fa-calendar-check"></i> Book Now
-                        </a>
                         <div class="flex gap-3">
                             <button id="mobile-theme-toggle"
                                 class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
@@ -508,6 +504,10 @@
                                 ⇄ RTL
                             </button>
                         </div>
+                        <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
+                            href="contact.html">
+                            <i class="fas fa-calendar-check"></i> Book Now
+                        </a>
                     </div>
                 </div>
             </div>
@@ -594,32 +594,67 @@
                 </h2>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group grid-card-2 bg-white dark:bg-[#2F2F2F] rounded-3xl p-8 text-center">
-                    <div
-                        class="feature-icon-2 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-copper text-2xl">
-                        <i class="fas fa-mountain"></i>
+                <!-- Card 1: Natural Materials -->
+                <div class="group grid-card-2 bg-white dark:bg-[#2F2F2F] rounded-3xl overflow-hidden flex flex-col text-center shadow-lg">
+                    <div class="relative h-52 sm:h-56 overflow-hidden">
+                        <img src="assets/Granite Collection.jpg" alt="Natural Materials - Granite, quartz and marble stone"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                     </div>
-                    <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2">Natural Materials</h3>
-                    <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm">Granite, quartz, marble, and recycled
-                        stone — beautiful and responsible.</p>
+                    <div class="p-8 pt-0 flex flex-col flex-1 relative">
+                        <div
+                            class="w-16 h-16 rounded-2xl p-1 bg-white dark:bg-[#2F2F2F] mx-auto -mt-8 mb-5 shadow-xl relative z-10 border border-copper/20 group-hover:border-copper transition-colors duration-300">
+                            <div
+                                class="feature-icon-2 w-full h-full rounded-xl flex items-center justify-center text-copper text-2xl">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Natural Materials</h3>
+                        <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">Granite, quartz, marble, and recycled
+                            stone — beautiful and responsible.</p>
+                    </div>
                 </div>
-                <div class="group grid-card-2 bg-white dark:bg-[#2F2F2F] rounded-3xl p-8 text-center">
-                    <div
-                        class="feature-icon-2 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-copper text-2xl">
-                        <i class="fas fa-hand-sparkles"></i>
+
+                <!-- Card 2: Artisan Craft -->
+                <div class="group grid-card-2 bg-white dark:bg-[#2F2F2F] rounded-3xl overflow-hidden flex flex-col text-center shadow-lg">
+                    <div class="relative h-52 sm:h-56 overflow-hidden">
+                        <img src="assets/Stone-Polishing.webp" alt="Artisan Craft - Hand-finished edges and precision stone polishing"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                     </div>
-                    <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2">Artisan Craft</h3>
-                    <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm">Hand-finished edges and precision cuts
-                        that make each surface unique.</p>
+                    <div class="p-8 pt-0 flex flex-col flex-1 relative">
+                        <div
+                            class="w-16 h-16 rounded-2xl p-1 bg-white dark:bg-[#2F2F2F] mx-auto -mt-8 mb-5 shadow-xl relative z-10 border border-copper/20 group-hover:border-copper transition-colors duration-300">
+                            <div
+                                class="feature-icon-2 w-full h-full rounded-xl flex items-center justify-center text-copper text-2xl">
+                                <i class="fas fa-hand-sparkles"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">Artisan Craft</h3>
+                        <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">Hand-finished edges and precision cuts
+                            that make each surface unique.</p>
+                    </div>
                 </div>
-                <div class="group grid-card-2 bg-white dark:bg-[#2F2F2F] rounded-3xl p-8 text-center">
-                    <div
-                        class="feature-icon-2 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-copper text-2xl">
-                        <i class="fas fa-shield-halved"></i>
+
+                <!-- Card 3: 10-Year Warranty -->
+                <div class="group grid-card-2 bg-white dark:bg-[#2F2F2F] rounded-3xl overflow-hidden flex flex-col text-center shadow-lg">
+                    <div class="relative h-52 sm:h-56 overflow-hidden">
+                        <img src="assets/process-install.jpg" alt="10-Year Warranty - Professional installation and structural guarantee"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                     </div>
-                    <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2">10-Year Warranty</h3>
-                    <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm">Peace of mind with our comprehensive
-                        structural guarantee.</p>
+                    <div class="p-8 pt-0 flex flex-col flex-1 relative">
+                        <div
+                            class="w-16 h-16 rounded-2xl p-1 bg-white dark:bg-[#2F2F2F] mx-auto -mt-8 mb-5 shadow-xl relative z-10 border border-copper/20 group-hover:border-copper transition-colors duration-300">
+                            <div
+                                class="feature-icon-2 w-full h-full rounded-xl flex items-center justify-center text-copper text-2xl">
+                                <i class="fas fa-shield-halved"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#1E1E1E] dark:text-[#FAF8F5] mb-2 font-display">10-Year Warranty</h3>
+                        <p class="text-[#1E1E1E]/70 dark:text-[#FAF8F5]/70 text-sm leading-relaxed">Peace of mind with our comprehensive
+                            structural guarantee.</p>
+                    </div>
                 </div>
             </div>
         </div>

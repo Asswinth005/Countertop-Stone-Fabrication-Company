@@ -537,10 +537,6 @@
 
                 <!-- Desktop actions & Mobile toggle -->
                 <div class="flex items-center gap-3 xl:gap-4 ms-auto">
-                    <a href="contact.html"
-                        class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
-                        <i class="fas fa-calendar-check"></i> Book Now
-                    </a>
                     <button id="theme-toggle"
                         class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center">
                         <i class="fas fa-moon dark:hidden"></i>
@@ -548,8 +544,12 @@
                     </button>
                     <button id="rtl-toggle"
                         class="hidden xl:flex w-10 h-10 rounded-full bg-copper/20 dark:bg-copper/20 text-copper hover:scale-110 transition items-center justify-center font-bold text-base">
-                        ?
+                        ⇄
                     </button>
+                    <a href="contact.html"
+                        class="hidden xl:inline-flex btn-primary py-2 px-5 rounded-full text-sm font-medium items-center gap-2 shadow-md hover:scale-105 transition">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
 
                     <!-- Mobile toggle -->
                     <button id="mobile-toggle"
@@ -588,10 +588,6 @@
                     <a class="block py-3 px-4 font-medium text-[#1E1E1E] dark:text-[#FAF8F5] hover:bg-[#FAF8F5]/60 dark:hover:bg-[#FAF8F5]/10 rounded-xl transition"
                         href="contact.html">Contact</a>
                     <div class="flex flex-col gap-3 pt-5 mt-3 border-t border-[#FAF8F5]/60 dark:border-[#FAF8F5]/10">
-                        <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
-                            href="contact.html">
-                            <i class="fas fa-calendar-check"></i> Book Now
-                        </a>
                         <div class="flex gap-3">
                             <button id="mobile-theme-toggle"
                                 class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
@@ -600,9 +596,13 @@
                             </button>
                             <button id="mobile-rtl-toggle"
                                 class="flex-1 py-2 rounded-full bg-copper/20 dark:bg-copper/20 text-copper text-sm font-medium flex items-center gap-2 justify-center">
-                                ? RTL
+                                ⇄ RTL
                             </button>
                         </div>
+                        <a class="text-center btn-primary py-2.5 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
+                            href="contact.html">
+                            <i class="fas fa-calendar-check"></i> Book Now
+                        </a>
                     </div>
                 </div>
             </div>
@@ -612,13 +612,14 @@
     <!-- ======== PRODUCTS HERO ======== -->
     <section class="relative pt-36 pb-24 md:pt-44 md:pb-28 overflow-hidden bg-[#1E1E1E]">
         <div class="absolute inset-0 z-0">
-            <img src="assets/products-hero.jpg" alt="Luxury Stone Slab Gallery" class="w-full h-full object-cover opacity-50">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#1E1E1E]/85 via-[#1E1E1E]/65 to-[#1E1E1E]/95"></div>
+            <img src="assets/products-hero.jpg" alt="Luxury Stone Slab Gallery" class="w-full h-full object-cover opacity-75">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1E1E1E]/85 via-[#1E1E1E]/55 to-[#1E1E1E]"></div>
+            <div class="absolute inset-0 stone-overlay"></div>
         </div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-4xl mx-auto text-center animate-slide-up">
                 <!-- Centered Breadcrumbs -->
-                <nav class="flex items-center justify-center gap-2 text-sm text-[#FAF8F5]/70 mb-5 bg-transparent">
+                <nav class="flex items-center justify-center gap-2 text-sm text-[#FAF8F5]/80 mb-5 bg-transparent drop-shadow-sm">
                     <a href="index.html" class="hover:text-copper transition flex items-center gap-1.5">
                         <i class="fas fa-home text-xs"></i> Home
                     </a>
@@ -628,12 +629,12 @@
 
                 <!-- Heading -->
                 <h1
-                    class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-[#FAF8F5] leading-tight mb-5 drop-shadow-[0_5px_20px_rgba(0,0,0,0.8)]">
+                    class="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-[#FAF8F5] leading-tight mb-5 drop-shadow-[0_5px_20px_rgba(0,0,0,0.9)]">
                     Stone <span class="text-copper">Collections</span>
                 </h1>
 
                 <!-- Subtitle -->
-                <p class="text-lg md:text-xl text-[#FAF8F5]/80 max-w-2xl mx-auto leading-relaxed mb-9">
+                <p class="text-lg md:text-xl text-[#FAF8F5]/90 max-w-2xl mx-auto leading-relaxed mb-9 drop-shadow-md">
                     Browse our full range of granite, quartz, marble, and specialty stone surfaces. Filter by material,
                     color, and finish to find the perfect slab for your project.
                 </p>
@@ -645,7 +646,7 @@
                         <i class="fas fa-layer-group"></i> Browse Slabs
                     </a>
                     <a href="contact.html"
-                        class="border border-[#FAF8F5]/30 hover:border-copper text-[#FAF8F5] hover:bg-copper hover:text-white px-8 py-3.5 rounded-full inline-flex items-center gap-2 text-base font-medium backdrop-blur-sm transition duration-300">
+                        class="border border-[#FAF8F5]/40 text-[#FAF8F5] bg-[#1E1E1E]/30 hover:border-copper hover:bg-copper hover:text-white px-8 py-3.5 rounded-full inline-flex items-center gap-2 text-base font-medium backdrop-blur-sm transition duration-300 shadow-lg">
                         <i class="fas fa-file-invoice-dollar"></i> Get a Free Quote
                     </a>
                 </div>
